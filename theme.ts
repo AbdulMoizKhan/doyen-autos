@@ -255,7 +255,7 @@ export const theme: ThemeOptions = createTheme({
     button: {
       fontWeight: 600,
     },
-    fontFamily: "",
+    fontFamily: "sans-serif",
     body1: {
       fontSize: "1rem",
       fontWeight: 400,
