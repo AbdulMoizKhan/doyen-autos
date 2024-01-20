@@ -1,4 +1,6 @@
-import React from 'react'
+import React from "react";
+import TextField from "../../components/text-field";
+import { Box } from "@mui/material";
 
 const HomePage = () => {
   return (
@@ -8,9 +10,9 @@ const HomePage = () => {
       <h1>home</h1>
       <h1>home</h1>
       <h1>home</h1>
-      <h1>home</h1>
+      <TextField name="test" placeholder="test" />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
