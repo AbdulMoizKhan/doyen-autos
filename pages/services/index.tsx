@@ -1,13 +1,14 @@
 import React from 'react'
-import Layout from '../../components/Layout'
 import { Services } from '../../views'
+import Header from '../../components/header';
 
-const Service = () => {
-  return (
-    <Layout>
-      <Services/>
-    </Layout>
-  )
-}
+
+  const Service = () => (
+    <>
+      <Header />
+      <Services />
+    </>
+  );
+  
 
 export default Service
