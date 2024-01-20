@@ -13,7 +13,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TextLinks } from "../../utils/helpers";
-import Img from "../img";
+// import Img from "../img";
 import TextButton from "../text-button";
 import Container from "../container";
 import Logo from "../../assests/logo.png";
@@ -26,7 +26,7 @@ const wrapper = (variant: string | null | undefined): SxProps => {
     display: "flex",
     alignItems: "center",
     zIndex: 1000,
-    position: "fixed",
+    position: "relative",
     width: "100%",
   };
 };
