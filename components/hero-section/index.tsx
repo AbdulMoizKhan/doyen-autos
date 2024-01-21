@@ -21,26 +21,32 @@ const heroWrapper: SxProps = {
     xs: "none",
   },
 };
+const containerResposive : SxProps ={
+ pb: {md:'80px' , xs : '0px'},
+ pt: {md:'225px', xs:'120px'}
+}
+const gridResponsiveWrapper : SxProps = {
+  flexDirection: {xs:"column", sm:"row"},
+  alignItems: {xs:'center'}
+}
 const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSection) => {
 
   return (
-    <Container sx={{ paddingTop: '135px', paddingBottom: '80px' }}>
-      <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={8}>
-          <Typography variant="h1" gutterBottom={true}>
-            {heroTittle}
-          </Typography>
+    <Container sx={containerResposive}>
+      <Grid container sx={gridResponsiveWrapper} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
+          <Typography variant="h1" gutterBottom={true} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
           <Typography variant="h4" gutterBottom={true}>
             {heroSubContent}
           </Typography>
           <Button>{buttonText}</Button>
         </Grid>
-        <Grid item xs={4}>
-          <Form/>
+        <Grid item md={4} xs={12}>
+          <Form />
         </Grid>
       </Grid>
     </Container>
-  )
+  );
 }
 
 export default HeroSection;
