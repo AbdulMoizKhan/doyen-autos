@@ -23,7 +23,7 @@ const HomePage = () => {
         heroSubContent="Join the 13,240,704 drivers who have compared local prices to book, so you can get on with the things that make you smile"
         buttonText="Get Started"
       />
-      <Divider sx={{borderColor:'#fff',margin:'40px 0px'}}></Divider>
+      <Divider sx={{borderColor:'#fff',marginTop:'260px', marginBottom:'90px'}}></Divider>
       <ImageText/>
       <Divider sx={{borderColor:'#fff',margin:'40px 0px'}}></Divider>
       <ImageCards/>

@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography'
 import Popover from '@mui/material/Popover';
 import Form from '../form'
+import Image from 'next/image';
+import banner from '../../assests/banner.jpg'
 interface PropsHeroSection {
   heroTittle?: string,
   heroSubContent?: string,
@@ -32,6 +34,14 @@ const gridResponsiveWrapper : SxProps = {
 const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSection) => {
 
   return (
+    <>
+    <Image src={banner} alt='helow' style={{
+    color: 'transparent',
+    position: 'absolute',
+    zIndex: '-1',
+    width: '100%',
+    opacity: '0.3',
+    height: '100vh '}}/>
     <Container sx={containerResposive}>
       <Grid container sx={gridResponsiveWrapper} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
@@ -46,6 +56,7 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
         </Grid>
       </Grid>
     </Container>
+    </>
   );
 }
 
