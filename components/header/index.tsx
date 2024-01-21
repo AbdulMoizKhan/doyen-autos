@@ -26,7 +26,7 @@ const wrapper = (variant: string | null | undefined): SxProps => {
     display: "flex",
     alignItems: "center",
     zIndex: 1000,
-    position: "relative",
+    position: "fixed",
     width: "100%",
   };
 };
