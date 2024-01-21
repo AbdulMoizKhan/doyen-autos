@@ -35,11 +35,11 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
     <Container sx={containerResposive}>
       <Grid container sx={gridResponsiveWrapper} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
-          <Typography variant="h1" gutterBottom={true} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
-          <Typography variant="h4" gutterBottom={true}>
+          <Typography variant="h1" gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
+          <Typography variant="h4" gutterBottom>
             {heroSubContent}
           </Typography>
-          <Button>{buttonText}</Button>
+          image of trustpilot
         </Grid>
         <Grid item md={4} xs={12}>
           <Form />
