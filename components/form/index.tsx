@@ -43,11 +43,11 @@ const Form = () => {
         <Box sx={{ minWidth: 275 }} color={'white'}>
             <Card variant="outlined" sx={{ bgcolor: '#0065a6' }} >
                 <CardContent>
-                    <Typography variant="h4" gutterBottom>
+                    <Typography variant="h4" gutterBottom color={'white'}>
                         Let's Go
                     </Typography>
                     <TextField id="outlined-basic" label="Vehicle Registration" variant="outlined" fullWidth size="small" />
-                    <span onClick={handleClickOpenCar} style={{ cursor: 'pointer' }}>Don't know your vehicle registration?</span>
+                    <Box sx={{display:'flex', justifyContent:'flex-end',padding:'7px 0px'}}><span onClick={handleClickOpenCar} style={{ cursor: 'pointer' }}>Don't know your vehicle registration?</span></Box> 
                     <Dialog sx={{ color: '#0065a6' }} open={openCar} onClose={handleClickCloseCar} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
                         <DialogTitle id="alert-dialog-title">{"Select your car"}</DialogTitle>
                         <DialogContent>
@@ -71,7 +71,7 @@ const Form = () => {
                             </Button>
                         </DialogActions>
                     </Dialog>
-                    <Button variant="outlined" fullWidth onClick={handleClickOpenServices} sx={{ paddingLeft: '10px', marginBottom: '10px', display: 'flex', justifyContent: 'flex-start', color: 'white', border: '1px solid white' }}>
+                    <Button variant="outlined" fullWidth onClick={handleClickOpenServices} sx={{fontWeight:'100',marginBottom:'13px', paddingLeft: '10px', display: 'flex', justifyContent: 'flex-start', color: 'white', border: '1px solid white' }}>
                         Service
                     </Button>
                     <Dialog open={openServices} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
