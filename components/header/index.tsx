@@ -82,13 +82,9 @@ export default function Header({ variant }: IHeader) {
             alignItems={"center"}
             justifyContent={"space-around"}
           >
-            <Stack direction={"column"}>
-              <Box sx={imgBox}>
-                <Link href="/">
-                  <Image src={Logo} alt="Logo" width={65} height={65} />
-                </Link>
-              </Box>
-            </Stack>
+              <Link href="/">
+                <Image src={Logo} alt="Logo" width={130} height={130} />
+              </Link>
             <Stack
               direction={"row"}
               alignItems={"center"}
