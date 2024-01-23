@@ -18,6 +18,7 @@ import TextButton from "../text-button";
 import Container from "../container";
 import Logo from "../../assests/logo.png";
 import Image from "next/image";
+import DefaultButton from "../default-button";
 
 const wrapper = (variant: string | null | undefined): SxProps => {
   return {
@@ -31,9 +32,9 @@ const wrapper = (variant: string | null | undefined): SxProps => {
   };
 };
 
-const imgBox: SxProps = {
-  width: { sm: "190px", xs: "120px" },
-  height: { sm: "60px", xs: "40px" },
+const btnWrapper: SxProps = {
+  borderRadius: "8px",
+  backgroundColor: "tomato",
 };
 
 const navbarWrap: SxProps = {
@@ -82,13 +83,13 @@ export default function Header({ variant }: IHeader) {
             alignItems={"center"}
             justifyContent={"space-around"}
           >
-              <Link href="/">
-                <Image src={Logo} alt="Logo" width={130} height={130} />
-              </Link>
+            <Link href="/">
+              <Image src={Logo} alt="Logo" width={130} height={130} />
+            </Link>
             <Stack
               direction={"row"}
               alignItems={"center"}
-              spacing={4}
+              spacing={5}
               sx={navbarWrap}
             >
               {TextLinks?.map((text) => {
@@ -110,6 +111,11 @@ export default function Header({ variant }: IHeader) {
                   />
                 );
               })}
+              <Box pl={10}>
+                <DefaultButton variant="contained" sx={btnWrapper}>
+                  Get a Quote
+                </DefaultButton>
+              </Box>
             </Stack>
 
             <IconButton
@@ -175,6 +181,11 @@ export default function Header({ variant }: IHeader) {
                       </ListItem>
                     ))}
                   </List>
+                  <Box sx={{display:'flex',alignItems:"center",justifyContent:'center',mt:'10px'}}>
+                    <DefaultButton variant="contained" sx={btnWrapper}>
+                      Get a Quote
+                    </DefaultButton>
+                  </Box>
                 </Box>
               </Box>
             </Drawer>
