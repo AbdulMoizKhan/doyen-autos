@@ -11,7 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { TextLinks } from "../../utils/helpers";
 // import Img from "../img";
 import TextButton from "../text-button";
@@ -67,6 +67,7 @@ const drawerItems: SxProps = {
 };
 
 export default function Header({ variant }: IHeader) {
+  const router = useRouter();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const location = usePathname();
 
@@ -112,7 +113,13 @@ export default function Header({ variant }: IHeader) {
                 );
               })}
               <Box pl={10}>
-                <DefaultButton variant="contained" sx={btnWrapper}>
+                <DefaultButton
+                  variant="contained"
+                  sx={btnWrapper}
+                  onClick={() => {
+                    router.push("/quote");
+                  }}
+                >
                   Get a Quote
                 </DefaultButton>
               </Box>
@@ -181,8 +188,21 @@ export default function Header({ variant }: IHeader) {
                       </ListItem>
                     ))}
                   </List>
-                  <Box sx={{display:'flex',alignItems:"center",justifyContent:'center',mt:'10px'}}>
-                    <DefaultButton variant="contained" sx={btnWrapper}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mt: "10px",
+                    }}
+                  >
+                    <DefaultButton
+                      variant="contained"
+                      sx={btnWrapper}
+                      onClick={() => {
+                        router.push("/quote");
+                      }}
+                    >
                       Get a Quote
                     </DefaultButton>
                   </Box>
