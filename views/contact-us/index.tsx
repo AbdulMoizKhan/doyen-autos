@@ -127,7 +127,7 @@ const ContactUsPage = () => {
                       label="Messages"
                       multiline
                       maxRows={4}
-                      rows={4}
+                      rows={2}
                       name="message"
                       formik={formik}
                     />
@@ -150,8 +150,9 @@ const ContactUsPage = () => {
                 sx={{
                   backgroundColor: "#ddd3bc",
                   p: 4,
-                  height: "65%",
+                  height: { xs: "90%", sm: "86%" },
                   border: "1px solid white",
+                  borderRadius: "5px",
                 }}
                 spacing={4}
               >
@@ -173,6 +174,14 @@ const ContactUsPage = () => {
                   <Typography variant="body1">
                     50 Stronend Street Glasgow G22 6AR{" "}
                   </Typography>
+                </Box>
+
+                <Box sx={{ width: "380", height: "280" }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8950.819437180893!2d-4.2593108!3d55.8851341!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488845bf3f0e4b03%3A0x82a20df87a8b23b1!2sDoyenAutos!5e0!3m2!1sen!2s!4v1706082217042!5m2!1sen!2s"
+                    style={{ width: "100%", height: "100%" }}
+                    loading="lazy"
+                  ></iframe>
                 </Box>
               </Stack>
             </Grid>
