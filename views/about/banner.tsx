@@ -57,8 +57,7 @@ const Banner = () => {
                 mt: 8,
               }}
             >
-              Auto Electrical Service | DPF Solutions | 1,2,3, Remapping |
-              Mileage Solutions | Locksmith Services
+              Welcome to Doyen Auto Services – Your Trusted Automotive Partner!
             </Typography>
           </Grid>
         </Grid>
