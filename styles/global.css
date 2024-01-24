@@ -15,3 +15,75 @@ body {
   background-color: black !important;
   color: white !important;
 }
+
+.white{
+  color: white;
+}
+
+.black{
+  color: black !important;
+}
+
+.card{
+  border-radius: 14px;
+  background:  #FFF;
+  box-shadow: 0px 6px 56px 0px rgba(0, 0, 0, 0.10);
+  
+}
+
+.card_name{
+  color:  #050505;
+  font-family: Lato;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px; 
+  text-transform: capitalize;
+}
+
+.card_remarks{
+  color: #616161;
+  font-family: Lato;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23px; 
+}
+
+.card_quote{
+  overflow: hidden;
+color: #616161;
+text-overflow: ellipsis;
+font-family: Lato;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px;
+}
+
+.score{
+  padding: 10px 12px;
+  border-radius: 32px;
+border: 1px solid #8F8F8F;
+max-height:7px;
+}
+
+.primaryCTA{
+  height: 60px;
+  width: 200px;
+  font-size: 18px;
+  font-family: Helvetica Neue;
+  border: 1px solid #fff;
+  border-radius: 200px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: .0025em;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.primaryCTA:hover{
+  opacity: .5;
+}
