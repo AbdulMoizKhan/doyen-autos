@@ -42,7 +42,7 @@ body {
 }
 
 .card_remarks{
-  color: #616161;
+  color: #616161 !important;
   font-family: Lato;
   font-size: 14px;
   font-style: normal;
@@ -52,7 +52,7 @@ body {
 
 .card_quote{
   overflow: hidden;
-color: #616161;
+color: #616161 !important;
 text-overflow: ellipsis;
 font-family: Lato;
 font-size: 16px;
