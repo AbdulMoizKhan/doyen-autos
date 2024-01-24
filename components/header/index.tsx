@@ -99,14 +99,14 @@ export default function Header({ variant }: IHeader) {
                     color={
                       variant === "light"
                         ? location === text.url
-                          ? "#f40809"
+                          ? "tomato"
                           : "#000"
                         : location === text.url
-                        ? "#f40809"
+                        ? "tomato"
                         : "#fff"
                     }
                     title={text.title}
-                    hoverColor={"#f40809"}
+                    hoverColor={"tomato"}
                     redirectLink={text.url}
                     key={text.title}
                   />
@@ -174,14 +174,14 @@ export default function Header({ variant }: IHeader) {
                           color={
                             variant === "light"
                               ? location === item.url
-                                ? "#f40809"
+                                ? "tomato"
                                 : "#000"
                               : location === item.url
-                              ? "#f40809"
+                              ? "tomato"
                               : "#fff"
                           }
                           title={item.title}
-                          hoverColor={"#f40809"}
+                          hoverColor={"tomato"}
                           redirectLink={item.url}
                           key={item.title}
                         />
