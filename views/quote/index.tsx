@@ -1,28 +1,12 @@
 import { useState } from "react";
-import {
-  Box,
-  FormHelperText,
-  Grid,
-  Typography,
-  FormControl,
-  SxProps,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Container,
-  Button,
-} from "@mui/material";
+import { Box, Grid, Typography, SxProps, Container } from "@mui/material";
 import { useFormik } from "formik";
 import { validationSchema } from "./schema";
 import TextField from "../../components/text-field";
 import DefaultButton from "../../components/default-button";
-
-const checkboxitems = [
-  { label: "General Enquiry" },
-  { label: "Trails" },
-  { label: "Complaints" },
-  { label: "Feedback" },
-];
+import DatePicker from "../../components/date-picker";
+import MultipleSelect from "../../components/select-box";
+import { serviceOptions } from "../../utils/helpers";
 
 const imageStyle: SxProps = {
   display: { md: "block", xs: "none" },
@@ -47,10 +31,16 @@ const btnWrapper: SxProps = {
 };
 
 const initialValues = {
+  registrationNo: "",
+  make: "",
+  model: "",
+  engineSize: "",
+  postCode: "",
   firstname: "",
   lastName: "",
   email: "",
   phoneNo: "",
+  address: "",
   subject: "",
   message: "",
 };
@@ -64,6 +54,10 @@ const QuotePage = () => {
       console.log(values);
     },
   });
+
+  const handleSelectionChange = (selectedValues: string[]) => {
+    console.log("Selected Values:", selectedValues);
+  };
 
   return (
     <Box sx={{ pt: "95px" }}>
@@ -87,7 +81,57 @@ const QuotePage = () => {
                 <Grid container spacing={{ xs: 3, sm: 5, md: 7 }}>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      variant="standard"
+                      variant="outlined"
+                      placeholder="Registration No"
+                      label="Registration No"
+                      type="text"
+                      name="registrationNo"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Make"
+                      label="Make"
+                      type="text"
+                      name="make"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Model"
+                      label="Model"
+                      type="text"
+                      name="model"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Engine Size"
+                      label="Engine Size"
+                      type="text"
+                      name="engineSize"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Post Code"
+                      label="Post Code"
+                      type="text"
+                      name="postCode"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
                       placeholder="First Name"
                       label="First Name"
                       type="text"
@@ -97,7 +141,7 @@ const QuotePage = () => {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      variant="standard"
+                      variant="outlined"
                       placeholder="Last Name"
                       label="Last Name"
                       type="text"
@@ -107,7 +151,7 @@ const QuotePage = () => {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      variant="standard"
+                      variant="outlined"
                       placeholder="Email"
                       label="Email"
                       type="email"
@@ -116,8 +160,25 @@ const QuotePage = () => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <Typography fontSize={20} fontWeight={500} gutterBottom>
+                        Services
+                      </Typography>
+                      <MultipleSelect
+                        options={serviceOptions}
+                        onChange={handleSelectionChange}
+                      />
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
                     <TextField
-                      variant="standard"
+                      variant="outlined"
                       placeholder="Phone Number"
                       label="Phone Number"
                       type="text"
@@ -125,12 +186,31 @@ const QuotePage = () => {
                       formik={formik}
                     />
                   </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Your Address"
+                      label="Address"
+                      type="text"
+                      name="address"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <DatePicker
+                      label="Schedule Your Date"
+                      required
+                      onChangeValue={(value) => {
+                        console.log(value);
+                      }}
+                    />
+                  </Grid>
 
                   <Grid item xs={12}>
                     <TextField
-                      variant="standard"
-                      placeholder="Write Services you want with message"
-                      label="Services"
+                      variant="outlined"
+                      placeholder="Write your message...."
+                      label="Message"
                       multiline
                       maxRows={4}
                       rows={4}
@@ -145,7 +225,7 @@ const QuotePage = () => {
                       type="submit"
                       isLoading={isLoading}
                     >
-                      Send Message
+                      Get Quote
                     </DefaultButton>
                   </Grid>
                 </Grid>
