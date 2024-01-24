@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Grid, Typography, SxProps, Container } from "@mui/material";
 import { useFormik } from "formik";
 import { validationSchema } from "./schema";
@@ -39,14 +39,14 @@ const initialValues = {
   firstname: "",
   lastName: "",
   email: "",
+  services: [],
   phoneNo: "",
   address: "",
-  subject: "",
+  date: new Date(),
   message: "",
 };
 
 const QuotePage = () => {
-  const [isLoading, setBtnLoader] = useState(false);
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
@@ -56,7 +56,7 @@ const QuotePage = () => {
   });
 
   const handleSelectionChange = (selectedValues: string[]) => {
-    console.log("Selected Values:", selectedValues);
+    formik.setFieldValue("services", selectedValues);
   };
 
   return (
@@ -201,8 +201,9 @@ const QuotePage = () => {
                       label="Schedule Your Date"
                       required
                       onChangeValue={(value) => {
-                        console.log(value);
+                        formik.setFieldValue("date", value);
                       }}
+                      value={formik.values.date}
                     />
                   </Grid>
 
@@ -212,7 +213,6 @@ const QuotePage = () => {
                       placeholder="Write your message...."
                       label="Message"
                       multiline
-                      maxRows={4}
                       rows={4}
                       name="message"
                       formik={formik}
@@ -223,7 +223,6 @@ const QuotePage = () => {
                       variant="contained"
                       sx={btnWrapper}
                       type="submit"
-                      isLoading={isLoading}
                     >
                       Get Quote
                     </DefaultButton>
