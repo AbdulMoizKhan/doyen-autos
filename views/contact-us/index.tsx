@@ -44,7 +44,6 @@ const initialValues = {
   lastName: "",
   email: "",
   phoneNo: "",
-  subject: "",
   message: "",
 };
 
@@ -126,7 +125,6 @@ const ContactUsPage = () => {
                       placeholder="Write your message..."
                       label="Messages"
                       multiline
-                      maxRows={4}
                       rows={2}
                       name="message"
                       formik={formik}
