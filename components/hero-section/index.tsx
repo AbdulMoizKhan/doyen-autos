@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import Popover from '@mui/material/Popover';
 import Form from '../form'
 import Image from 'next/image';
-import banner from '../../assests/banner.jpg'
+import car from '../../assests/car-being-taking-care-workshop.jpg'
 interface PropsHeroSection {
   heroTittle?: string,
   heroSubContent?: string,
@@ -27,31 +27,32 @@ const containerResposive : SxProps ={
  pb: {md:'80px' , xs : '0px'},
  pt: {md:'225px', xs:'120px'}
 }
-const gridResponsiveWrapper : SxProps = {
-  flexDirection: {xs:"column", sm:"row"},
-  alignItems: {xs:'center'}
+const formPadding : SxProps ={
+pt: {xs: '50px'},
+maxWidth:{xs:'400px'},
+justifyContent: {xs:'center'}
 }
 const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSection) => {
 
   return (
     <>
-    <Image src={banner} alt='helow' style={{
+    <Image src={car} alt='helow' style={{
     color: 'transparent',
     position: 'absolute',
     zIndex: '-1',
     width: '100%',
-    opacity: '0.3',
+    filter: 'brightness(0.5)',
     height: '100vh '}}/>
     <Container sx={containerResposive}>
-      <Grid container sx={gridResponsiveWrapper} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container  columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
-          <Typography variant="h1" gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h1" className='white' gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
+          <Typography variant="h4" className='white' textAlign={'justify'} sx={{pr:'60px'}} gutterBottom>
             {heroSubContent}
           </Typography>
-          image of trustpilot
+        {/* <Button className='primaryCTA'>Get Quote</Button> */}
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid sx={formPadding} item md={4} xs={12}>
           <Form />
         </Grid>
       </Grid>

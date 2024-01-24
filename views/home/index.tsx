@@ -5,22 +5,22 @@ import ImageText from "../../components/image-text";
 import ImageCards from "../../components/image-cards";
 
 const HomePage = () => {
-  const changedText = ['Repair', 'MOT', 'Car Service'];
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  // const changedText = ['Repair', 'MOT', 'Car Service'];
+  // const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % changedText.length);
-    }, 2000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % changedText.length);
+  //   }, 2000);
 
-    return () => clearInterval(intervalId);
-  }, []);
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   return (
     <>
       <HeroSection
-        heroTittle={`Compare Instant </br> ${changedText[currentTitleIndex]} </br> Deals`}
-        heroSubContent="Join the 13,240,704 drivers who have compared local prices to book, so you can get on with the things that make you smile"
+        heroTittle={`Doyen Auto Services`}
+        heroSubContent="At Doyen Auto Services, we understand the importance of a reliable and well-maintained vehicle in your daily life. Our team of dedicated and experienced car mechanics is committed to providing top-notch automotive services to keep you on the road with confidence."
         buttonText="Get Started"
       />
       <Divider sx={{borderColor:'#fff',marginTop:'260px', marginBottom:'90px'}}></Divider>
