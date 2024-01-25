@@ -26,7 +26,6 @@ const Banner = () => {
           position: "absolute",
           zIndex: "-1",
           width: "100%",
-          opacity: "0.8",
           filter: "brightness(0.4)",
           height: "100vh ",
         }}
