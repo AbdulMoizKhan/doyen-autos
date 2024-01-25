@@ -27,6 +27,7 @@ const Banner = () => {
           zIndex: "-1",
           width: "100%",
           opacity: "0.8",
+          filter: "brightness(0.4)",
           height: "100vh ",
         }}
       />
@@ -57,7 +58,8 @@ const Banner = () => {
                 mt: 8,
               }}
             >
-              Welcome to Doyen Auto Services – Your Trusted Automotive Partner!
+              Welcome to Doyen Auto Services <br />
+              Your Trusted Automotive Partner!
             </Typography>
           </Grid>
         </Grid>
