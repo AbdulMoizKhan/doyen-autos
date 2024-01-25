@@ -23,9 +23,9 @@ const heroWrapper: SxProps = {
     xs: "none",
   },
 };
-const containerResposive : SxProps ={
- pb: {md:'80px' , xs : '0px'},
- pt: {md:'225px', xs:'120px'}
+const ContainerResposive : SxProps ={
+//  pb: {md:'80px' , xs : '0px'},
+//  pt: {md:'225px', xs:'120px'},
 }
 const formPadding : SxProps ={
 pt: {xs: '50px'},
@@ -36,17 +36,20 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
 
   return (
     <>
+    <Container sx={ContainerResposive}>
     <Image src={car} alt='helow' style={{
     color: 'transparent',
     position: 'absolute',
     zIndex: '-1',
     width: '100%',
     filter: 'brightness(0.5)',
-    height: '100vh '}}/>
-    <Container sx={containerResposive}>
-      <Grid container  columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    height: '100vh',
+    top:'0px',
+    left:'0px'
+    }}/>
+      <Grid container height={'100vh'} alignContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
-          <Typography data-aos="fade-up" variant="h1" className='white' gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: heroTittle || '' }} />
+          <Typography data-aos="fade-up" variant="h1" className='white' gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: (heroTittle.includes("Doyen Auto") ) ? `${heroTittle} ` : ''}} />
           <Typography data-aos="fade-up" variant="h4" className='white' textAlign={'justify'} sx={{pr:'60px'}} gutterBottom>
             {heroSubContent}
           </Typography>
