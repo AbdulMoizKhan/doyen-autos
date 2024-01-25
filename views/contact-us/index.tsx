@@ -22,7 +22,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 
 const containerWrapper: SxProps = {
   backgroundColor: "background.paper",
-  padding: "40px",
+  padding: { xs: "30px", sm: "40px" },
   boxShadow: 14,
   borderRadius: "10px",
   alignItems: "stretch",
@@ -60,12 +60,16 @@ const ContactUsPage = () => {
   return (
     <Box sx={{ pt: "95px" }}>
       <Box component="div" sx={{ m: { xs: 2, sm: 8 } }}>
-        <Typography
-          variant="h1"
-          textAlign="center"
-          sx={{ mt: 4, mb: { xs: 5, sm: 10 } }}
-        >
+        <Typography variant="h1" textAlign="center" sx={{ mt: 4 }}>
           Contact Us
+        </Typography>
+        <Typography
+          variant="h6"
+          textAlign="center"
+          sx={{ mt: 2, mb: { xs: 5, sm: 10 } }}
+        >
+          We value your feedback and inquiries. Feel free to get in touch with
+          us using the following options:
         </Typography>
         <Container>
           <Grid
@@ -157,16 +161,24 @@ const ContactUsPage = () => {
                 <Typography variant="h5">Contact Information</Typography>
 
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: "10px" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
                 >
                   <EmailIcon />
-                  <Typography variant="body1">
+                  <Typography variant="body1" sx={{ wordBreak: "break-all" }}>
                     support@doyenautos.co.uk
                   </Typography>
                 </Box>
 
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: "10px" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
                 >
                   <PlaceIcon />
                   <Typography variant="body1">
