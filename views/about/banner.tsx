@@ -40,6 +40,7 @@ const Banner = () => {
             sx={{ paddingRight: "0px", width: "100%" }}
           >
             <Typography
+              data-aos="fade-up"
               sx={{
                 fontWeight: "700",
                 lineHeight: "1.5",
@@ -50,6 +51,7 @@ const Banner = () => {
               About Us
             </Typography>
             <Typography
+              data-aos="fade-up"
               sx={{
                 fontWeight: "700",
                 lineHeight: "1.2",

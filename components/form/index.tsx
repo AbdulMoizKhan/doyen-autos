@@ -60,7 +60,7 @@ const Form = ({ }: PropsFrom) => {
                 onSuccess={onSubmit}
             >
                 <Box sx={{ minWidth: 275 }} >
-                    <Card sx={{ bgcolor: '#89878673' }} >
+                    <Card sx={{ bgcolor: '#89878673' }} data-aos="flip-right">
                         <CardContent sx={{ padding: '20px 20px 8px 20px' }}>
                             <Typography variant="h4" gutterBottom color={'white'} sx={{}}>
                                 Let's Go

@@ -13,6 +13,7 @@
     "@mui/material": "^5.15.5",
     "@mui/styled-engine-sc": "^6.0.0-alpha.12",
     "@mui/x-date-pickers": "^6.19.0",
+    "aos": "^2.3.4",
     "dayjs": "^1.11.10",
     "firebase": "^10.7.2",
     "formik": "^2.4.5",
