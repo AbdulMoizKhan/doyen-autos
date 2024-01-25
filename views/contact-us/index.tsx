@@ -60,13 +60,14 @@ const ContactUsPage = () => {
   return (
     <Box sx={{ pt: "95px" }}>
       <Box component="div" sx={{ m: { xs: 2, sm: 8 } }}>
-        <Typography variant="h1" textAlign="center" sx={{ mt: 4 }}>
+        <Typography variant="h1" textAlign="center" sx={{ mt: 4 }} data-aos="zoom-in">
           Contact Us
         </Typography>
         <Typography
           variant="h6"
           textAlign="center"
           sx={{ mt: 2, mb: { xs: 5, sm: 10 } }}
+          data-aos="zoom-in"
         >
           We value your feedback and inquiries. Feel free to get in touch with
           us using the following options:
@@ -79,7 +80,7 @@ const ContactUsPage = () => {
             sx={containerWrapper}
             spacing={1}
           >
-            <Grid item xs={12} sm={12} md={7}>
+            <Grid item xs={12} sm={12} md={7} data-aos="flip-left">
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={{ xs: 3, sm: 5, md: 7 }}>
                   <Grid item xs={12} sm={6}>
@@ -157,6 +158,7 @@ const ContactUsPage = () => {
                   borderRadius: "5px",
                 }}
                 spacing={4}
+                data-aos="zoom-out"
               >
                 <Typography variant="h5">Contact Information</Typography>
 
