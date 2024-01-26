@@ -51,15 +51,14 @@ export default function Footer() {
         { title: "Home", url: "/" },
         { title: "About Us", url: "/about" },
         { title: "Services", url: "/services" },
-        { title: "Contact Us", url: "/contact-us" },
       ],
     },
     {
       title: "Company",
       links: [
-        { title: "About Us", url: "/about" },
-        { title: "Our mission", url: "/about" },
-        { title: "Our vision", url: "/about" },
+        { title: "Our Focus", url: "/focus" },
+        { title: "Our Mission", url: "/about" },
+        { title: "Our Vision", url: "/about" },
       ],
     },
     {
