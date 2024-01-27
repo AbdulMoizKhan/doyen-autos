@@ -33,10 +33,12 @@ maxWidth:{xs:'400px'},
 justifyContent: {xs:'center'}
 }
 const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSection) => {
-
+ 
+  
   return (
     <>
     <Container sx={ContainerResposive}>
+    <Box >
     <Image src={car} alt='helow' style={{
     color: 'transparent',
     position: 'absolute',
@@ -47,7 +49,9 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
     top:'0px',
     left:'0px'
     }}/>
-      <Grid container height={'100vh'} alignContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
+    </Box>
+          <Grid container height={'100vh'} alignContent={'center'} justifyContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
           <Typography data-aos="fade-up" variant="h1" className='white' gutterBottom sx={{fontWeight: '800',lineHeight: '1.1'}} dangerouslySetInnerHTML={{ __html: (heroTittle.includes("Doyen Auto") ) ? `${heroTittle} ` : ''}} />
           <Typography data-aos="fade-up" variant="h4" className='white' textAlign={'justify'} sx={{pr:'60px'}} gutterBottom>

@@ -1,20 +1,37 @@
 import React from 'react'
-import { Button, Container, Grid, Stack, Typography } from '@mui/material';
+import { Button, Container, Grid, Stack, SxProps, Typography } from '@mui/material';
 import Cards from '../cards';
 import human from '../../assests/human.jpeg'
 import human2 from '../../assests/human2.png'
 import human3 from '../../assests/human3.png'
 
+
+
+const cardResponsive: SxProps = {
+    flexDirection: {
+      xs: "column",
+      md: "row",
+    },
+    justifyContent:{
+        md:'center'
+    },
+    alignItems:{
+        xs:'center'
+    },
+    gap:'25px'
+  };
+
+
 const ImageCards = () => {
     return (
         <div>
             <Container>
-                <Stack direction="column" spacing={2}>
-                    <Typography variant="h1" gutterBottom={true}>
-                        Garages we trust and you love
+                <Stack direction="column" sx={{marginBottom:'20px'}}>
+                    <Typography variant="h1" >
+                        Reviews from our loyal  customer
                     </Typography>
                 </Stack>
-                <Stack direction="row" spacing={2} alignContent={'center'} justifyContent={'center'}>
+                <Stack sx={cardResponsive}>
                     <Cards 
                         title='Experienced and trustworthy garage.'
                         quote='“I was very happy with how my MOT was booked in and managed. Thanks guys.”'
