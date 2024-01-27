@@ -64,6 +64,7 @@ const Detail = () => {
             fontWeight={400}
             textAlign={"center"}
             my={8}
+            data-aos="zoom-in"
           >
             At Doyen Auto Services, we take pride in being a leading name in the
             automotive service industry. With a commitment to excellence and a
@@ -73,10 +74,10 @@ const Detail = () => {
 
         </Box>
         <Divider sx={{mt:5,mb:5}} />
-        <Typography variant="h4" mb={3}>
+        <Typography variant="h4" mb={3} data-aos="zoom-in">
           Our Mission
         </Typography>
-        <Typography variant="subtitle2">
+        <Typography variant="subtitle2" data-aos="zoom-in">
           At Doyen Auto Services, our mission is to deliver unparalleled
           automotive solutions that prioritize quality, reliability, and
           customer satisfaction. We strive to exceed expectations by combining
@@ -84,12 +85,12 @@ const Detail = () => {
           to keeping your vehicle in optimal condition.
         </Typography>
         <Divider sx={{mt:3}} />
-        <Typography variant="h4" mt={3} mb={3}>
+        <Typography variant="h4" mt={3} mb={3} data-aos="zoom-in">
           Services We Offer
         </Typography>
         <ul style={{ paddingLeft: "24px" }}>
           {ourServices.map((item, i) => (
-            <li key={i} style={{ paddingBottom: "14px" }}>
+            <li key={i} style={{ paddingBottom: "14px" }} data-aos="zoom-in">
               <Typography variant="subtitle2">
                 {" "}
                 <span style={{ fontWeight: "bold" }}>{item.name} </span>
@@ -99,12 +100,12 @@ const Detail = () => {
           ))}
         </ul>
         <Divider sx={{mt:3}} />
-        <Typography variant="h4" mt={3} mb={3}>
+        <Typography variant="h4" mt={3} mb={3} data-aos="zoom-in">
           Why Choose Doyen Auto Services
         </Typography>
         <ul style={{ paddingLeft: "24px" }}>
           {whyChooseUs.map((item, i) => (
-            <li key={i} style={{ paddingBottom: "14px" }}>
+            <li key={i} style={{ paddingBottom: "14px" }} data-aos="zoom-in">
               <Typography variant="subtitle2">
                 {" "}
                 <span style={{ fontWeight: "bold" }}>{item.name} </span>
@@ -120,10 +121,11 @@ const Detail = () => {
           mt={3}
           mb={3}
           sx={{ textAlign: "center", color: "tomato" }}
+          data-aos="zoom-out"
         >
           Contact Us
         </Typography>
-        <Typography variant="subtitle2" fontWeight={700}>
+        <Typography variant="subtitle2" fontWeight={700} data-aos="zoom-out">
           Experience the Doyen Auto Services difference. Visit our garage at 50,
           Stronend Street, G22 6AR <br />
           Give us a call at 07760926245 or support@doyen.co.uk to schedule your

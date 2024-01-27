@@ -1,11 +1,10 @@
 import React from 'react'
 import { Card, CardContent, CardMedia, Stack, Typography } from '@mui/material';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import star from '../../assests/star2.png'
-import human from '../../assests/human.jpeg'
 
 interface CustomCardProps {
-    imageUrl?: string;
+    imageUrl?: string | StaticImageData;
     title?: string;
     quote?: string;
     bottomLeftText?: string;
@@ -22,7 +21,7 @@ const Cards = ({ imageUrl, title, quote, bottomLeftText,score }: CustomCardProps
                             <Stack direction={'row'} spacing={2}>
                                 <CardMedia>
                                     <Image
-                                        src={human}
+                                        src={imageUrl}
                                         alt={'helow'}
                                         style={{ borderRadius: '90px', objectFit: 'cover', width: '56px', height: '56.833px' }}
                                     />

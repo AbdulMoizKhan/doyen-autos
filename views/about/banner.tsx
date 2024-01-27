@@ -26,7 +26,7 @@ const Banner = () => {
           position: "absolute",
           zIndex: "-1",
           width: "100%",
-          opacity: "0.8",
+          filter: "brightness(0.4)",
           height: "100vh ",
         }}
       />
@@ -39,6 +39,7 @@ const Banner = () => {
             sx={{ paddingRight: "0px", width: "100%" }}
           >
             <Typography
+              data-aos="fade-up"
               sx={{
                 fontWeight: "700",
                 lineHeight: "1.5",
@@ -49,6 +50,7 @@ const Banner = () => {
               About Us
             </Typography>
             <Typography
+              data-aos="fade-up"
               sx={{
                 fontWeight: "700",
                 lineHeight: "1.2",
@@ -57,7 +59,8 @@ const Banner = () => {
                 mt: 8,
               }}
             >
-              Welcome to Doyen Auto Services – Your Trusted Automotive Partner!
+              Welcome to Doyen Auto Services <br />
+              Your Trusted Automotive Partner!
             </Typography>
           </Grid>
         </Grid>

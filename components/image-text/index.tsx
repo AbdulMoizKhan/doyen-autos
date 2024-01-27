@@ -1,41 +1,57 @@
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import wehelp from '../../assests/wehelp.png';
+import HorizontalCard from '../horizontal-card';
+import Outline from '../../assests/Outline.png'
+import Setting from '../../assests/Setting.png'
+interface PropsImageText {
+    heading?: string
+    subheading?: string
+}
 
-
-
-const ImageText = () => {
+const ImageText = ({ heading, subheading }: PropsImageText) => {
     return (
         <>
-            <Container>
-                <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    <Grid item md={6}>
-                        {/* <Image
-                        src={wehelp}
-                        alt={'car'}
-                        width={560}
-                        height={550}
-                        loading="lazy"
-                        style={{objectFit: "contain",borderRadius:'20px'}}	
-                        // style={{borderRadius:'20px'}}	
-                        /> */}
-                    </Grid>
-                    <Grid item md={6}>
-                        <Typography variant="h1" gutterBottom={true}>
-                            13,244,550 happy drivers can't be wrong.
-                        </Typography>
-                        <Typography variant="h4" gutterBottom={true}>
-                            “I'm always on the go, so booking my MOT on my phone was really useful.
-                            I compared garages, picked the best one for me and even saved money, all
-                            whilst waiting for my morning coffee!”
-                        </Typography>
-                        {/* <Image></Image> */}
-                        <Box sx={{ display: 'flex', justifyContent:'flex-end' }}>
-                        <Button className='primaryCTA black'>SEE OUR REVIEW</Button>
+            <Container sx={{ pt: '90px' }}>
+                <Typography variant='h3' gutterBottom textAlign={'left'} className='headingSecond'>
+                    {heading}
+                </Typography>
+                <Typography className='subHeadingSecond grey' gutterBottom>
+                    {subheading}
+                </Typography>
+                <Stack direction={'row'}>
+                    <Box flexDirection={'column'} justifyContent={'center'} >
+                        <HorizontalCard
+                            chooseHeading="Expertise: "
+                            chooseDetail="Our team of certified technicians brings unparalleled expertise to every service, ensuring your vehicle receives the attention it deserves."
+                            imageUrl={Outline}
+                        />
+                        <HorizontalCard
+                            chooseHeading="Quality Assurance: "
+                            chooseDetail="We pride ourselves on using top-quality parts and employing the latest technology to deliver reliable and lasting solutions."
+                            imageUrl={Setting}
+                        />
+                        <HorizontalCard
+                            chooseHeading="Customer-Centric Approach: "
+                            chooseDetail="Your satisfaction is at the forefront of everything we do. Experience transparent communication, fair pricing, and a commitment to exceeding your expectations. "
+                            imageUrl={Outline}
+                        />
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <Button className='primaryCTA black'>SEE OUR REVIEW</Button>
                         </Box>
-                    </Grid>
-                </Grid>
+                    </Box>
+                    <Box>
+                        <Image
+                            src={wehelp}
+                            alt={'car'}
+                            width={476}
+                            height={399}
+                            loading="lazy"
+                            style={{borderRadius: '20px' }}
+                        />
+                    </Box>
+                </Stack>
             </Container>
         </>
     );

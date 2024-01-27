@@ -17,11 +17,15 @@ body {
 }
 
 .white{
-  color: white;
+  color: white !important;
 }
 
 .black{
   color: black !important;
+}
+
+.grey{
+  color: #616161 !important;
 }
 
 .card{
@@ -69,21 +73,61 @@ max-height:7px;
 }
 
 .primaryCTA{
-  height: 60px;
-  width: 200px;
-  font-size: 18px;
-  font-family: Helvetica Neue;
-  border: 1px solid #fff;
-  border-radius: 200px;
-  font-weight: 500;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: .0025em;
-  background-color: transparent;
-  color: #fff;
-  cursor: pointer;
+  height: 60px !important;
+  width: 200px !important;
+  font-size: 18px !important;
+  font-family: Helvetica Neue !important;
+  border: 1px solid #020202 !important;
+  border-radius: 200px !important;
+  font-weight: 500 !important;
+  line-height: 16px !important;
+  text-align: center !important;
+  letter-spacing: .0025em !important;
+  background-color: transparent !important;
+  color: #fff ;
+  cursor: pointer ;
 }
 
 .primaryCTA:hover{
-  opacity: .5;
+  opacity: .8 !important;
+  color: tomato !important;
+  border: 1px solid tomato !important;
+}
+
+
+.headingSecond{
+  font-size: 36px !important;
+font-style: normal !important;
+font-weight: 700 !important;
+line-height: 44px !important; 
+letter-spacing: -0.72px !important;
+}
+
+.subHeadingSecond{
+  font-family: Poppins !important;
+font-size: 18px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: 28.5px !important;
+}
+
+
+.chooseHeading{
+  color: #084162 !important;
+
+  font-family: Poppins !important;
+  font-size: 22px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+
+.chooseDetail{
+  color: rgba(33, 103, 118, 0.86);
+
+  font-family: Poppins !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: normal !important;
 }
