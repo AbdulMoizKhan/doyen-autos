@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Stack, SxProps, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import wehelp from '../../assests/wehelp.png';
@@ -10,6 +10,14 @@ interface PropsImageText {
     subheading?: string
 }
 
+
+const imgageResponsive: SxProps = {
+    display: {
+      md: "flex",
+      xs: "none",
+    },
+  };
+
 const ImageText = ({ heading, subheading }: PropsImageText) => {
     return (
         <>
@@ -20,8 +28,8 @@ const ImageText = ({ heading, subheading }: PropsImageText) => {
                 <Typography className='subHeadingSecond grey' gutterBottom>
                     {subheading}
                 </Typography>
-                <Stack direction={'row'}>
-                    <Box flexDirection={'column'} justifyContent={'center'} >
+                <Stack direction={'row'} sx={{alignItems:'center'}}>
+                    <Box flexDirection={'column'}>
                         <HorizontalCard
                             chooseHeading="Expertise: "
                             chooseDetail="Our team of certified technicians brings unparalleled expertise to every service, ensuring your vehicle receives the attention it deserves."
@@ -41,7 +49,7 @@ const ImageText = ({ heading, subheading }: PropsImageText) => {
                             <Button className='primaryCTA black'>SEE OUR REVIEW</Button>
                         </Box>
                     </Box>
-                    <Box>
+                    <Box sx={imgageResponsive}>
                         <Image
                             src={wehelp}
                             alt={'car'}
