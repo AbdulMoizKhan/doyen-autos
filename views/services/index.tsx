@@ -1,11 +1,13 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React from "react";
 import ServiceCard from "../../components/service-card";
+import Service from "../../assests/service.jpg";
+import Service2 from "../../assests/aboutBanner.jpg";
 
 const Services = () => {
   return (
-    <Box sx={{ pt: "95px" }}>
-      <Box component="div" sx={{ m: { xs: 2, sm: 8 } }}>
+    <Box sx={{ pt: "95px", width: "100%" }}>
+      <Box component="div" sx={{ m: { xs: 2, sm: 6 } }}>
         <Typography
           variant="h1"
           textAlign="center"
@@ -35,26 +37,53 @@ const Services = () => {
           }}
         />
       </Box>
-      <Grid container  margin={3}>
-        <Grid item xs={4}>
+      <Grid container p={6} spacing={3} sx={{ width: "100%" }}>
+        <Grid item xs={6}>
           <ServiceCard
             heading={"Routine Maintenance"}
-            body={`ABC`}
-            imgSrc=""
+            services={[
+              "•	Oil Changes",
+              "•	Oil Filter Change",
+              "•	Fluid Checks and Top-Ups",
+              "•	Air Filter Replacement",
+            ]}
+            imgSrc={Service.src}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <ServiceCard
             heading={"Routine Maintenance"}
-            body={`ABC`}
-            imgSrc=""
+            services={[
+              "•	Oil Changes",
+              "•	Oil Filter Change",
+              "•	Fluid Checks and Top-Ups",
+              "•	Air Filter Replacement",
+            ]}
+            imgSrc={Service2.src}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <ServiceCard
             heading={"Routine Maintenance"}
-            body={`ABC`}
-            imgSrc=""
+            services={[
+              "•	Oil Changes",
+              "•	Oil Filter Change",
+              "•	Fluid Checks and Top-Ups",
+              "•	Air Filter Replacement",
+            ]}
+            imgSrc={Service.src}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <ServiceCard
+            heading={"Routine Maintenance"}
+            services={[
+              "•	Oil Changes",
+              "•	Oil Filter Change",
+              "•	Fluid Checks and Top-Ups",
+              "•	Air Filter Replacement",
+            ]}
+            imgSrc={Service2.src}
           />
         </Grid>
       </Grid>
