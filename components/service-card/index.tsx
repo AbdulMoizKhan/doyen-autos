@@ -18,20 +18,20 @@ export default function ServiceCard({
 }: IServiceCard) {
   return (
     <Card sx={{ maxWidth: "100%" }}>
-      <CardActionArea>
+      <CardActionArea disabled>
         <CardMedia
           component="img"
-          height="200"
+          height="300"
           image={imgSrc}
           alt="green iguana"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ minHeight: "185px", backgroundColor: "whitesmoke" }}>
+          <Typography gutterBottom variant="h4" component="div">
             {heading}
           </Typography>
           <Box>
             {services.map((item) => (
-              <Typography key={item} variant="body1">
+              <Typography key={item} variant="h6" mb={1} color='#575353'>
                 {item}
               </Typography>
             ))}
