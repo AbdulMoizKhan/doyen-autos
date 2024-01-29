@@ -3,6 +3,7 @@ import React from "react";
 import ServiceCard from "../../components/service-card";
 import Service from "../../assests/service.jpg";
 import Service2 from "../../assests/aboutBanner.jpg";
+import { servicesData } from "../../mocks/services";
 
 const Services = () => {
   return (
@@ -38,55 +39,45 @@ const Services = () => {
         />
       </Box>
       <Grid container p={6} spacing={3} sx={{ width: "100%" }}>
-        <Grid item xs={6}>
-          <ServiceCard
-            heading={"Routine Maintenance"}
-            services={[
-              "•	Oil Changes",
-              "•	Oil Filter Change",
-              "•	Fluid Checks and Top-Ups",
-              "•	Air Filter Replacement",
-            ]}
-            imgSrc={Service.src}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <ServiceCard
-            heading={"Routine Maintenance"}
-            services={[
-              "•	Oil Changes",
-              "•	Oil Filter Change",
-              "•	Fluid Checks and Top-Ups",
-              "•	Air Filter Replacement",
-            ]}
-            imgSrc={Service2.src}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <ServiceCard
-            heading={"Routine Maintenance"}
-            services={[
-              "•	Oil Changes",
-              "•	Oil Filter Change",
-              "•	Fluid Checks and Top-Ups",
-              "•	Air Filter Replacement",
-            ]}
-            imgSrc={Service.src}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <ServiceCard
-            heading={"Routine Maintenance"}
-            services={[
-              "•	Oil Changes",
-              "•	Oil Filter Change",
-              "•	Fluid Checks and Top-Ups",
-              "•	Air Filter Replacement",
-            ]}
-            imgSrc={Service2.src}
-          />
-        </Grid>
+        {servicesData.map((service, index) => (
+          <Grid key={index} item xs={12} sm={12} md={6} mb={4}>
+            <ServiceCard
+              heading={service.heading}
+              services={service.services}
+              imgSrc={service.imgSrc}
+            />
+          </Grid>
+        ))}
       </Grid>
+      <Divider sx={{ mt: 3 }} />
+      <Box p={6} display="flex" alignItems="center" flexDirection="column">
+        <Typography
+          variant="h3"
+          mt={3}
+          mb={3}
+          sx={{ textAlign: "center", color: "tomato" }}
+          data-aos="zoom-out"
+        >
+          Schedule an Appointment Today!
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          fontWeight={700}
+          data-aos="zoom-out"
+          sx={{ padding: { xs: "0px 40px", sm: "0px 50px", md: "0px 70px" } }}
+        >
+          Whether your vehicle needs routine maintenance, urgent repairs, or
+          performance upgrades, Doyen Auto Services is here to deliver top-notch
+          service. Our skilled technicians use the latest tools and technology
+          to ensure your vehicle receives the care it deserves. Schedule an
+          appointment today and experience the difference of working with a
+          trusted car mechanic team.
+        </Typography>
+        <Typography variant="h6" mt={5} mb={3}>
+          Thank you for choosing Doyen Auto Services – Where Excellence Meets
+          Automotive Care!
+        </Typography>
+      </Box>
     </Box>
   );
 };
