@@ -28,11 +28,14 @@ body {
   color: #616161 !important;
 }
 
+.background-color-black{
+  background-color: #040607 !important;
+}
+
 .card{
   border-radius: 14px;
   background:  #FFF;
-  box-shadow: 0px 6px 56px 0px rgba(0, 0, 0, 0.10);
-  
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .card_name{
@@ -114,7 +117,6 @@ line-height: 28.5px !important;
 
 .chooseHeading{
   color: #084162 !important;
-
   font-family: Poppins !important;
   font-size: 22px !important;
   font-style: normal !important;
@@ -124,7 +126,6 @@ line-height: 28.5px !important;
 
 .chooseDetail{
   color: rgba(33, 103, 118, 0.86);
-
   font-family: Poppins !important;
   font-size: 18px !important;
   font-style: normal !important;
@@ -153,20 +154,58 @@ line-height: 28.5px !important;
 }
 .box-container_heaidng{
   color: #FFF;
-font-family: Poppins;
-font-size: 26.35px;
-font-style: normal;
-font-weight: 700;
-line-height: 32.572px; 
+  font-family: Poppins;
+  font-size: 26.35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32.572px; 
 }
 
 .box-container_body{
   color: #C4C4C4;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: 21.958px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21.958px;
+}
+
+.review_heading{
+  color: #040607;
+  font-family: Poppins;
+  font-size: 45.348px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+  line-height: 64.783px; 
+  letter-spacing: -0.907px;
+}
+
+
+.acheivementheader{
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.horizontal_image{
+    padding: 20px;
+    border-radius: 6px;
+    background-color:tomato;
+}
+
+.horizontal_image2{
+  padding: 20px;
+  border-radius: 6px;
+  background-color:tomato;
+}
+
+.achievements_horizontal{
+  padding: 20px 0px;
 }
 @media only screen and (max-width: 550px) {
   .box-container_body{
