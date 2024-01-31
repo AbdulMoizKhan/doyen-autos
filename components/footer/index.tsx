@@ -40,7 +40,8 @@ export default function Footer() {
     {
       icon: <AiFillFacebook color="#000" />,
       size: "37px",
-      link: "https://www.facebook.com/people/Doyen-Auto-Services/100089723090410/",
+      link:
+        "https://www.facebook.com/people/Doyen-Auto-Services/100089723090410/",
     },
   ];
 
@@ -111,7 +112,7 @@ export default function Footer() {
                 }}
               >
                 <Link href="/">
-                  <Image src={Logo} alt="Logo" width={200} height={200} />
+                  <Image src={Logo} alt="Logo" width={150} height={150} />
                 </Link>
               </Box>
             </Grid>
