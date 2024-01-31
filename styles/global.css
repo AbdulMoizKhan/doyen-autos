@@ -135,7 +135,7 @@ line-height: 28.5px !important;
 .box-container_btn{
   color: #FFF;
   text-align: center;
-  font-family: Poppins;
+  font-family: Poppins !important;
   font-size: 13.175px;
   font-style: normal;
   font-weight: 500;
@@ -146,15 +146,15 @@ line-height: 28.5px !important;
   align-items: center;
   gap: 5.856px;
   border-radius: 4.392px;
-  background: tomato ;
+  background: tomato !important;
 }
 
 .box-container_btn2{
   color: #5F6F86 !important;
 }
 .box-container_heaidng{
-  color: #FFF;
-  font-family: Poppins;
+  color: #FFF !important;
+  font-family: Poppins !important;
   font-size: 26.35px;
   font-style: normal;
   font-weight: 700;
@@ -162,8 +162,8 @@ line-height: 28.5px !important;
 }
 
 .box-container_body{
-  color: #C4C4C4;
-  font-family: Poppins;
+  color: #C4C4C4 !important;
+  font-family: Poppins !important;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -171,8 +171,8 @@ line-height: 28.5px !important;
 }
 
 .review_heading{
-  color: #040607;
-  font-family: Poppins;
+  color: #040607 !important;
+  font-family: Poppins !important;
   font-size: 45.348px;
   font-style: normal;
   text-align: center;
