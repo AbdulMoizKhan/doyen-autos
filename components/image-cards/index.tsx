@@ -9,7 +9,7 @@ import { useMediaQuery } from 'react-responsive'
 
 const reviews = [
     {
-        title: 'Experienced and trustworthy garage.',
+        title: 'trustworthy garage.',
         quote: '“I was very happy with how my MOT was booked in and managed. Thanks guys.”',
         bottomLeftText: 'Roxane',
         score: '4.0',
@@ -60,11 +60,11 @@ const ImageCards = () => {
     return (
         <Container>
             <Stack direction="column" sx={{ marginBottom: '20px' }}>
-                <Typography variant="h3" className='review_heading'>
+                <Typography variant="h3" textAlign={'center'}>
                     Reviews from our loyal customer
                 </Typography>
             </Stack>
-            <Stack direction="row" justifyContent="center" alignItems="center" gap={2}>
+            <Stack direction="row" justifyContent="center" alignItems="center" sx={{gap: {xs:'0px',sm:'10px',md:'10px'}}}>
                 <Button onClick={showPrevious}><MdOutlineArrowBackIos /></Button>
                 {reviews.slice(startIndex, startIndex + (isDesktopOrLaptop == true ? 3: isMobileOrLaptop== true ? 2 : 1)).map((review, index) => (
                     <Cards

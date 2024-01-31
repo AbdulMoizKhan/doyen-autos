@@ -33,7 +33,7 @@ const HomePage = () => {
       <BoxContainer />
       <Divider sx={{ borderColor: '#fff', margin: '40px 0px' }}></Divider>
       <AcheivedContainer />
-      <Divider sx={{ borderColor: '#fff', margin: '40px 0px' }}></Divider>
+      <Divider sx={{ borderColor: '#fff', margin: '60px 0px' }}></Divider>
       <ImageCards />
       <Divider sx={{ borderColor: '#fff', margin: '40px 0px' }}></Divider>
 
