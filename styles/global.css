@@ -35,7 +35,7 @@ body {
 .card{
   border-radius: 14px;
   background:  #FFF;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
 }
 
 .card_name{
@@ -71,7 +71,7 @@ line-height: 23px;
 .score{
   padding: 10px 12px;
   border-radius: 32px;
-border: 1px solid #8F8F8F;
+border: 1px solid #8F8F8F !important;
 max-height:7px;
 }
 
@@ -133,20 +133,20 @@ line-height: 28.5px !important;
   line-height: normal !important;
 }
 .box-container_btn{
-  color: #FFF;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 13.175px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 21.958px; 
-  display: flex;
-  padding: 11.711px 20.494px;
-  justify-content: center;
-  align-items: center;
-  gap: 5.856px;
-  border-radius: 4.392px;
-  background: tomato;
+  color: #FFF !important;
+  text-align: center !important;
+  font-family: Poppins !important;
+  font-size: 13.175px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 21.958px !important; 
+  display: flex !important;
+  padding: 11.711px 20.494px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 5.856px !important;
+  border-radius: 4.392px !important;
+  background: tomato !important;
 }
 
 .box-container_btn2{
@@ -171,7 +171,7 @@ line-height: 28.5px !important;
 }
 
 .review_heading{
-  color: #040607;
+  color: #040607 !important;
   font-family: Poppins;
   font-size: 45.348px;
   font-style: normal;
@@ -195,21 +195,21 @@ line-height: 28.5px !important;
 .horizontal_image{
     padding: 20px;
     border-radius: 6px;
-    background-color:tomato;
+    background-color:tomato !important;
 }
 
 .horizontal_image2{
   padding: 20px;
   border-radius: 6px;
-  background-color:tomato;
+  background-color:tomato !important;
 }
 
 .achievements_horizontal{
-  padding: 20px 0px;
+  padding: 20px 0px ;
 }
 @media only screen and (max-width: 550px) {
   .box-container_body{
-    color: #C4C4C4;
+    color: #C4C4C4 ;
     font-family: Poppins;
     font-size: 10px;
     font-style: normal;
