@@ -6,10 +6,14 @@ interface PropsHorizontalCard {
     chooseHeading?: string | StaticImageData
     chooseDetail?: string
     imageUrl?: string | StaticImageData;
+    section?: string
+    imageHeight: number
+    imageWidth: number
 }
 
 
-const HorizontalCard = ({ chooseHeading, chooseDetail, imageUrl }: PropsHorizontalCard) => {
+const HorizontalCard = ({ chooseHeading, chooseDetail, imageUrl,section ,imageHeight, imageWidth}: PropsHorizontalCard) => {
+
     return (
         <>
             <Box sx={{pb:'20px'}}>
@@ -17,13 +21,9 @@ const HorizontalCard = ({ chooseHeading, chooseDetail, imageUrl }: PropsHorizont
                     <Image
                         src={imageUrl}
                         alt={"choose"}
-                        height={'24'}
-                        width={'24'}
-                        style={{
-                            padding: '20px',
-                            borderRadius: '6px',
-                            backgroundColor:'tomato'
-                        }}
+                        height={imageHeight}
+                        width={imageWidth}
+                        className={ section==="achievements" ? "achievements_horizontal" :"horizontal_image"}
                     />
                     <Box flexDirection={'column'}>
                         <Typography className='chooseHeading'>{chooseHeading}</Typography>

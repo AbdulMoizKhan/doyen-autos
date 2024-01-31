@@ -50,7 +50,6 @@ const Cards = ({ imageUrl, title, quote, bottomLeftText,score }: CustomCardProps
                             {quote}
                         </Typography>
                     </Stack>
-
                 </CardContent>
             </Card>
         </>

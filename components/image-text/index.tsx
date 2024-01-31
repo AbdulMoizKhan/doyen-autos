@@ -34,16 +34,22 @@ const ImageText = ({ heading, subheading }: PropsImageText) => {
                             chooseHeading="Expertise: "
                             chooseDetail="Our team of certified technicians brings unparalleled expertise to every service, ensuring your vehicle receives the attention it deserves."
                             imageUrl={Outline}
+                            imageHeight={24}
+                            imageWidth={24}
                         />
                         <HorizontalCard
                             chooseHeading="Quality Assurance: "
                             chooseDetail="We pride ourselves on using top-quality parts and employing the latest technology to deliver reliable and lasting solutions."
                             imageUrl={Setting}
+                            imageHeight={24}
+                            imageWidth={24}
                         />
                         <HorizontalCard
                             chooseHeading="Customer-Centric Approach: "
                             chooseDetail="Your satisfaction is at the forefront of everything we do. Experience transparent communication, fair pricing, and a commitment to exceeding your expectations. "
                             imageUrl={Outline}
+                            imageHeight={24}
+                            imageWidth={24}
                         />
                         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
                             <Button className='primaryCTA black'>SEE OUR REVIEW</Button>
