@@ -1,13 +1,13 @@
-import { Container, Grid, SxProps, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, SxProps, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import AboutPicture from "../../assests/bannerCheck.jpg";
+import { useMediaQuery } from 'react-responsive'
 
-const containerResposive: SxProps = {
-  pb: { md: "80px", xs: "0px" },
-  pt: { md: "225px", xs: "120px" },
-  height: "100vh",
-};
+// const boxResposive: SxProps = {
+//   pr: '16px',
+//   pl: '16px'
+// };
 
 const flexBox: SxProps = {
   display: "flex",
@@ -16,28 +16,29 @@ const flexBox: SxProps = {
 };
 
 const Banner = () => {
+  const isMobileOrLaptop = useMediaQuery({ query: '(min-width: 900px)' })
+
   return (
     <>
-      <Image
-        src={AboutPicture}
-        alt="helow"
-        style={{
-          color: "transparent",
-          position: "absolute",
-          zIndex: "-1",
-          width: "100%",
-          filter: "brightness(0.4)",
-          height: "100vh ",
-        }}
-      />
-      <Container sx={containerResposive}>
-        <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid
-            item
-            md={12}
-            xs={12}
-            sx={{ paddingRight: "0px", width: "100%" }}
-          >
+      <Container >
+      {isMobileOrLaptop == true ? (
+       
+          <Image src={AboutPicture} alt='helow' 
+          style={{
+            color: 'transparent',
+            position: 'absolute',
+            zIndex: '-1',
+            width: '108%',
+            filter: 'brightness(0.5)',
+            height: '101vh',
+            top: '65px',
+            left: '0px'
+          }}
+          />
+        ) : (
+          <Box sx={{padding:'0px 26px' , backgroundColor: 'black', height: '50vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
+        )}
+          <Stack sx={{height:{ xs:'50vh' , md:'100vh' ,lg:'100vh'} , justifyContent:'center'}}>
             <Typography
               data-aos="fade-up"
               sx={{
@@ -62,8 +63,7 @@ const Banner = () => {
               Welcome to Doyen Auto Services <br />
               Your Trusted Automotive Partner!
             </Typography>
-          </Grid>
-        </Grid>
+          </Stack>
       </Container>
     </>
   );

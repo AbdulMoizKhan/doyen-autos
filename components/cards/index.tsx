@@ -14,7 +14,7 @@ interface CustomCardProps {
 const Cards = ({ imageUrl, title, quote, bottomLeftText,score }: CustomCardProps) => {
     return (
         <>
-            <Card className='card' sx={{ height: '300px', width: '320px' }} >
+            <Card className='card' sx={{ height: '300px', width: {xs:'270px' , md:'320px'} }} >
                 <CardContent sx={{padding: {xs:'10px 16px', md:'30px 24px'}}}>
                     <Stack direction={'column'} sx={{ gap:'20px' }}>
                         <Stack direction={'row'} justifyContent={'space-between'}>
