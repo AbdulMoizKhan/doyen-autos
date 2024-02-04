@@ -134,10 +134,10 @@ line-height: 28.5px !important;
   line-height: normal !important;
 }
 .box-container_btn{
-  color: #FFF;
+  color: #FFF !important;
   text-align: center;
-  font-family: Poppins;
-  font-size: 13.175px;
+  font-family: Poppins !important;
+  font-size: 13.175px !important;
   font-style: normal;
   font-weight: 500;
   line-height: 21.958px; 
@@ -146,47 +146,47 @@ line-height: 28.5px !important;
   justify-content: center;
   align-items: center;
   gap: 5.856px;
-  border-radius: 4.392px;
-  background: tomato ;
+  border-radius: 4.392px !important;
+  background: tomato !important;
 }
 
 .box-container_btn2{
   color: #5F6F86 !important;
 }
 .box-container_heaidng{
-  color: #FFF;
-  font-family: Poppins;
-  font-size: 26.35px;
+  color: #FFF !important;
+  font-family: Poppins !important;
+  font-size: 26.35px !important;
   font-style: normal;
-  font-weight: 700;
-  line-height: 32.572px; 
+  font-weight: 700 !important;
+  line-height: 32.572px !important; 
 }
 
 .box-container_body{
-  color: #C4C4C4;
-  font-family: Poppins;
-  font-size: 18px;
+  color: #C4C4C4 !important;
+  font-family: Poppins !important;
+  font-size: 18px !important;
   font-style: normal;
-  font-weight: 500;
-  line-height: 21.958px;
+  font-weight: 500 !important;
+  line-height: 21.958px !important;
 }
 
 .review_heading{
-  color: #040607;
-  font-family: Poppins;
-  font-size: 45.348px;
+  color: #040607 !important;
+  font-family: Poppins !important;
+  font-size: 45.348px !important;
   font-style: normal;
   text-align: center;
-  font-weight: 700;
-  line-height: 64.783px; 
-  letter-spacing: -0.907px;
+  font-weight: 700 !important;
+  line-height: 64.783px !important; 
+  letter-spacing: -0.907px !important;
 }
 
 
 .acheivementheader{
-  color: #000;
-  font-family: Poppins;
-  font-size: 18px;
+  color: #000 !important;
+  font-family: Poppins !important;
+  font-size: 18px !important;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -196,7 +196,7 @@ line-height: 28.5px !important;
 .horizontal_image{
     padding: 20px;
     border-radius: 6px;
-    background-color:tomato;
+    background-color:tomato ;
 }
 
 .horizontal_image2{
@@ -271,35 +271,35 @@ line-height: 28.5px !important;
 
 @media only screen and (max-width: 550px) {
   .box-container_body{
-    color: #C4C4C4;
-    font-family: Poppins;
-    font-size: 10px;
+    color: #C4C4C4 !important;
+    font-family: Poppins !important;
+    font-size: 10px !important;
     font-style: normal;
-    font-weight: 500;
-    line-height: 10px;
+    font-weight: 500 !important;
+    line-height: 10px !important;
   }
   .box-container_heaidng{
-    color: #FFF;
-    font-family: Poppins;
-    font-size: 11px;
+    color: #FFF !important;
+    font-family: Poppins !important;
+    font-size: 11px !important;
     font-style: normal;
-    font-weight: 700;
-    line-height: 15px;
+    font-weight: 700 !important;
+    line-height: 15px !important;
   }
   .box-container_btn{
     display: flex;
-    padding: 3.522px 6.164px;
+    padding: 3.522px 6.164px !important;
     justify-content: center;
     align-items: center;
-    gap: 1.761px;
-    font-size: 8px;
+    gap: 1.761px !important;
+    font-size: 8px !important;
   }
   .box-container_btn2{
     display: flex;
-    padding: 3.522px 6.164px;
+    padding: 3.522px 6.164px !important;
     justify-content: center;
     align-items: center;
-    gap: 1.761px;
-    font-size: 8px;
+    gap: 1.761px !important;
+    font-size: 8px !important;
   }
 }
