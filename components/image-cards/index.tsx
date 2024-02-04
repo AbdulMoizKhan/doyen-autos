@@ -4,12 +4,16 @@ import Cards from '../cards';
 import human from '../../assests/human.jpeg';
 import human2 from '../../assests/human2.png';
 import human3 from '../../assests/human3.png';
-import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from 'react-icons/md';
-import { useMediaQuery } from 'react-responsive'
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
 
 const reviews = [
     {
-        title: 'Experienced and trustworthy garage.',
+        title: 'trustworthy garage.',
         quote: '“I was very happy with how my MOT was booked in and managed. Thanks guys.”',
         bottomLeftText: 'Roxane',
         score: '4.0',
@@ -29,56 +33,78 @@ const reviews = [
         score: '3.5',
         imageUrl: human,
     },
+
     {
-        title: 'Impecable MTO Service',
-        quote: '“Very friendly staff and very friendly manager"',
-        bottomLeftText: 'Anabell',
-        score: '4.5',
+        title: 'Exceptional Service!',
+        quote: '“Extremely knowledgeable staff, manager went above and beyond. Highly recommended!"',
+        bottomLeftText: 'Samantha',
+        score: '4.8',
+        imageUrl: human,
+        },
+        {
+        title: 'Outstanding Workmanship!',
+        quote: '“Top-notch team fixed my car quickly. Appreciate their professionalism."',
+        bottomLeftText: 'James',
+        score: '4.9',
+        imageUrl: human,
+        },
+        {
+        title: 'Impressive Service!',
+        quote: '“Friendly, competent staff, manager ensured smooth service. Will return!"',
+        bottomLeftText: 'Sophie',
+        score: '4.7',
         imageUrl: human3,
-    },
+        },
+        {
+        title: 'Highly Recommend!',
+        quote: '“Fantastic experience! Courteous staff, manager was incredibly helpful. Thank you!"',
+        bottomLeftText: 'David',
+        score: '4.6',
+        imageUrl: human,
+        },
+        {
+        title: 'Great Service!',
+        quote: '“Exceptional service, knowledgeable staff, manager ensured everything. Coming back!"',
+        bottomLeftText: 'Emily',
+        score: '4.7',
+        imageUrl: human,
+        } 
 ];
 
+
 const ImageCards = () => {
-    const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
-    const isMobileOrLaptop = useMediaQuery({query: '(min-width: 700px)'})
-
-    const [startIndex, setStartIndex] = useState(0);
-
-    const showNext = () => {
-        if (startIndex < reviews.length - 1) {
-            setStartIndex(startIndex + 1);
-        }
-    };
-    console.log(startIndex)
-
-    const showPrevious = () => {
-        if (startIndex > 0) {
-            setStartIndex(startIndex - 1);
-        }
-    };
+    // const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' })
+    // const isMobileOrLaptop = useMediaQuery({ query: '(min-width: 700px)' })
 
     return (
-        <Container>
+        <>
             <Stack direction="column" sx={{ marginBottom: '20px' }}>
-                <Typography variant="h3" className='review_heading'>
+                <Typography variant="h3" textAlign={'center'}>
                     Reviews from our loyal customer
                 </Typography>
             </Stack>
-            <Stack direction="row" justifyContent="center" alignItems="center" gap={2}>
-                <Button onClick={showPrevious}><MdOutlineArrowBackIos /></Button>
-                {reviews.slice(startIndex, startIndex + (isDesktopOrLaptop == true ? 3: isMobileOrLaptop== true ? 2 : 1)).map((review, index) => (
-                    <Cards
-                        key={startIndex + index}
-                        title={review.title}
-                        quote={review.quote}
-                        bottomLeftText={review.bottomLeftText}
-                        score={review.score}
-                        imageUrl={review.imageUrl}
-                    />
-                ))}
-                <Button onClick={showNext}><MdOutlineArrowForwardIos /></Button>
-            </Stack>
-        </Container>
+            <Swiper
+                spaceBetween={0}
+                slidesPerView={'auto'}
+                rewind={true}
+                navigation={true} modules={[Navigation]}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                >
+                    {reviews.map((review, index) => (
+                        <SwiperSlide>
+                        <Cards
+                            key={index}
+                            title={review.title}
+                            quote={review.quote}
+                            bottomLeftText={review.bottomLeftText}
+                            score={review.score}
+                            imageUrl={review.imageUrl}
+                        />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+        </>
     );
 };
 

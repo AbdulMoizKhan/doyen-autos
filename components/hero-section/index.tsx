@@ -55,14 +55,12 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
           }}
           />
         </Box>) : (
-          <Box sx={{ backgroundColor: 'black', height: '100vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}>
-
-          </Box>
+          <Box sx={{ backgroundColor: 'black', height: '100vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
         )}
         <Grid container height={'100vh'} alignContent={'center'} justifyContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
             <Typography data-aos="fade-up" variant="h1" className='white' gutterBottom sx={{ fontWeight: '800', lineHeight: '1.1' }} dangerouslySetInnerHTML={{ __html: (heroTittle.includes("Doyen Auto")) ? `${heroTittle} ` : '' }} />
-            <Typography data-aos="fade-up" variant="h4" className='white' textAlign={'justify'} sx={{ pr: '60px' }} gutterBottom>
+            <Typography data-aos="fade-up" variant="h4" className='white' textAlign={'left'} sx={{ pr: {xs:'0px',md:'60px'}}} gutterBottom>
               {heroSubContent}
             </Typography>
             {/* <Button className='primaryCTA'>Get Quote</Button> */}

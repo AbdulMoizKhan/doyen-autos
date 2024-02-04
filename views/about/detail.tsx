@@ -56,7 +56,7 @@ const Detail = () => {
   return (
     <Box>
       <Container sx={{ mb: 6 }}>
-        <Divider sx={{mt:5}} />
+        <Divider sx={{mt:{xs:5, sm:9 ,md:15}}} />
         <Box sx={textWrapper}>
           <Typography
             variant="subtitle1"

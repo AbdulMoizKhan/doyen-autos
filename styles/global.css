@@ -35,7 +35,8 @@ body {
 .card{
   border-radius: 14px;
   background:  #FFF;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
 }
 
 .card_name{
@@ -207,6 +208,67 @@ line-height: 28.5px !important;
 .achievements_horizontal{
   padding: 20px 0px;
 }
+.arrow {
+	width: 6vmin;
+	height: 6vmin;
+	box-sizing: border-box;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: rotate(45deg);
+	
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		border-width: .8vmin .8vmin 0 0;
+		border-style: solid;
+		border-color: #030303;
+		transition: .2s ease;
+		display: block;
+		transform-origin: 100% 0;
+	}
+
+	
+	&:after {
+		content: '';
+		float: left;
+		position: relative;
+		top: -100%;
+		width: 100%;
+		height: 100%;
+		border-width: 0 .8vmin 0 0;
+		border-style: solid;
+		border-color: #fafafa;
+		transform-origin: 100% 0;
+		transition:.2s ease;
+	}
+	
+	&:hover::after {
+		transform: rotate(45deg);
+		border-color: rgb(22, 22, 21);
+		height: 120%;
+	}
+	&:hover::before {
+		border-color: rgb(22, 22, 22);
+		transform: scale(.8);
+		
+	}
+	
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  max-width: 320px;
+  margin: 0px 50px;
+}
+
 @media only screen and (max-width: 550px) {
   .box-container_body{
     color: #C4C4C4 !important;
