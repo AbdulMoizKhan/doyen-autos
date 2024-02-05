@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/api/data', async (req, res) => {
+app.get('doyen-autos-project1.vercel.app/api/data', async (req, res) => {
     try {
       const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
       const VRM = "KM14AKK";
