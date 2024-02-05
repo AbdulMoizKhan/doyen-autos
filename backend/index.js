@@ -16,7 +16,7 @@ const express_1 = __importDefault(require("express"));
 const axios = require('axios');
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
-app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('doyen-autos-project1.vercel.app/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
         const VRM = "KM14AKK";
