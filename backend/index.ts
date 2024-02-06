@@ -50,11 +50,53 @@ app.post('/api/submitcontactus', async(req, res) => {
     });
     
     let info = await transporter.sendMail({
-      from: 'doyenautos@gmail.com', 
+      from: 'Doyen Autos <doyenautos@gmail.com>', 
       to: req.body.email, 
-      subject: `Message From ${req.body.firstname}`, 
-      text: `${req.body.message}` , 
-      html: `<b>${req.body.firstname}</b><br/><br/>${req.body.message}`  
+      subject: `Message From ${req.body.firstname} ${req.body.lastName}`, 
+      html: `
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+              }
+              .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+              }
+              .header {
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px 5px 0 0;
+              }
+              .content {
+                padding: 20px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Message from Doyen Autos</h1>
+              </div>
+              <div class="content">
+                <p>Hello ${req.body.firstname} ${req.body.lastName},</p>
+                <p>Thank you for contacting us regarding our services.</p>
+                <p>We have received your message:</p>
+                <p>${req.body.message}</p>
+                <p>We will get back to you as soon as possible.</p>
+                <p>Best regards,<br/>Doyen Autos Team</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `
     });
     res.status(200).send('Email Successfully sent');
     res.end();
@@ -75,11 +117,70 @@ app.post('/api/quote',async(req,res) => {
     });
 
     let info = await quoteTransporter.sendMail({
-      from: 'abdulmoizkhan140@gmail.com',
+      from: 'Doyen Autos <doyenautos@gmail.com>',
       to: req.body.email,
-      subject: 'Service Quote Request', 
-      text: `Dear ${req.body.firstname} ${req.body.lastName},\n\nThank you for your service quote request. Here are the details:\n\nRegistration No: ${req.body.registrationNo}\nMake: ${req.body.make}\nModel: ${req.body.model}\nEngine Size: ${req.body.engineSize}\nPost Code: ${req.body.postCode}\nServices: ${req.body.services.join(', ')}\nPhone No: ${req.body.phoneNo}\nAddress: ${req.body.address}\nDate: ${new Date(req.body.date).toLocaleString()}\nMessage: ${req.body.message}\n\nWe will get back to you as soon as possible.\n\nBest regards,\nThe Doyen Autos Team`,
-      html: `<p>Dear ${req.body.firstname} ${req.body.lastName},</p><p>Thank you for your service quote request. Here are the details:</p><ul><li>Registration No: ${req.body.registrationNo}</li><li>Make: ${req.body.make}</li><li>Model: ${req.body.model}</li><li>Engine Size: ${req.body.engineSize}</li><li>Post Code: ${req.body.postCode}</li><li>Services: ${req.body.services.join(', ')}</li><li>Phone No: ${req.body.phoneNo}</li><li>Address: ${req.body.address}</li><li>Date: ${new Date(req.body.date).toLocaleString()}</li><li>Message: ${req.body.message}</li></ul><p>We will get back to you as soon as possible.</p><p>Best regards,<br/>The Doyen Autos Team</p>`
+      subject: 'Service Quote Confirmation',
+      html: `
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+              }
+              .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+              }
+              .header {
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px 5px 0 0;
+              }
+              .content {
+                padding: 20px;
+              }
+              ul {
+                list-style-type: none;
+                padding: 0;
+              }
+              ul li {
+                margin-bottom: 10px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Service Quote Confirmation</h1>
+              </div>
+              <div class="content">
+                <p>Dear ${req.body.firstname} ${req.body.lastName},</p>
+                <p>Thank you for your service quote request. We are pleased to confirm the following details:</p>
+                <ul>
+                  <li><strong>Registration No:</strong> ${req.body.registrationNo}</li>
+                  <li><strong>Make:</strong> ${req.body.make}</li>
+                  <li><strong>Model:</strong> ${req.body.model}</li>
+                  <li><strong>Engine Size:</strong> ${req.body.engineSize}</li>
+                  <li><strong>Post Code:</strong> ${req.body.postCode}</li>
+                  <li><strong>Services:</strong> ${req.body.services.join(', ')}</li>
+                  <li><strong>Phone No:</strong> ${req.body.phoneNo}</li>
+                  <li><strong>Address:</strong> ${req.body.address}</li>
+                  <li><strong>Date:</strong> ${new Date(req.body.date).toLocaleString()}</li>
+                  <li><strong>Message:</strong> ${req.body.message}</li>
+                </ul>
+                <p>We will proceed with the requested services and get back to you with further details.</p>
+                <p>Best regards,<br/>The Doyen Autos Team</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `
     });
     
     res.status(200).send("Quote has been mailed successfully");
