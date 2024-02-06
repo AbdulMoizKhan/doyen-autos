@@ -7,17 +7,7 @@ import BoxContainer from "../../components/box-container";
 import AcheivedContainer from "../../components/acheived-container";
 
 const HomePage = () => {
-  // const changedText = ['Repair', 'MOT', 'Car Service'];
-  // const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % changedText.length);
-  //   }, 2000);
-
-  //   return () => clearInterval(intervalId);
-  // }, []);
-
+  
   return (
     <>
       <HeroSection

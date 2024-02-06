@@ -3,220 +3,82 @@ import {
   Box,
   Card,
   TextField,
-  Button,
   Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
   CardContent,
   CardActions,
-  MenuItem,
   Stack,
   SxProps,
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import {
-  FormContainer,
-  TextFieldElement,
-  useForm,
-  useWatch,
-} from "react-hook-form-mui";
 import DefaultButton from "../default-button";
 import BasicModal from "../modal";
+import axios from 'axios';
 
-const enginesize = [
-  {
-    value: "1",
-    label: "1000CC",
-  },
-  {
-    value: "2",
-    label: "1300CC",
-  },
-  {
-    value: "3",
-    label: "1800CC",
-  },
-  {
-    value: "4",
-    label: "3000CC",
-  },
-];
 const btnWrapper: SxProps = {
   padding: "20px 20px",
   borderRadius: "8px",
   backgroundColor: "tomato",
 };
 
-interface PropsFrom {}
-const Form = ({}: PropsFrom) => {
+interface PropsFrom { }
+
+const Form = ({ }: PropsFrom) => {
+  const [carDetails, setCarDetails] = useState({ VRN: "", Make: "", Model: "", FuelType: "", TransmissionType: "", EngineSize: "", Doors: "" });
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleModalOpen = () => {
-    setModalOpen(true);
+  const handleModalOpen = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/data');
+      setCarDetails(response.data);
+      setModalOpen(true);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
   };
 
   const handleModalClose = () => {
     setModalOpen(false);
   };
-  const [openServices, setOpen] = useState(false);
-  const [openCar, setOpenCar] = useState(false);
-
-  const [values, setValues] = useState();
-  const onSubmit = (data) => {
-    console.log("form data", data);
-    setValues(data);
-  };
-  const handleClickOpenServices = () => {
-    setOpen(true);
-  };
-  const handleClickOpenCar = () => {
-    setOpenCar(true);
-  };
-  const handleClickCloseCar = () => {
-    setOpenCar(false);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   return (
     <>
-      <FormContainer onSuccess={onSubmit}>
-        <Box sx={{ minWidth: 275 }}>
-          <Card sx={{ bgcolor: "#89878673" }} data-aos="flip-right">
-            <CardContent sx={{ padding: "20px 20px 8px 20px" }}>
-              <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
-                Let's Go
-              </Typography>
-              <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
-                We'll help you save money on car repairs in just a few clicks.
-              </Typography>
-              <TextField
-                variant="outlined"
-                placeholder="Registration Number"
-                label="Registration Number"
-                type="text"
-                name="firstname"
+      <Box sx={{ minWidth: 275 }}>
+        <Card sx={{ bgcolor: "#89878673" }} data-aos="flip-right">
+          <CardContent sx={{ padding: "20px 20px 8px 20px" }}>
+            <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
+              Let's Go
+            </Typography>
+            <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
+              We'll help you save money on car repairs in just a few clicks.
+            </Typography>
+            <TextField
+              variant="outlined"
+              placeholder="Registration Number"
+              label="Registration Number"
+              type="text"
+              name="VRN"
+              fullWidth
+            />
+          </CardContent>
+          <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "center", width: "93%" }}
+            >
+              <DefaultButton
+                variant="contained"
+                sx={btnWrapper}
+                type="submit"
                 fullWidth
-              />
-              {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end', padding: '7px 0px' }}><span onClick={handleClickOpenCar} style={{ cursor: 'pointer' }}>Don't know your vehicle registration?</span></Box> */}
-              <Dialog
-                sx={{ color: "#0065a6" }}
-                open={openCar}
-                onClose={handleClickCloseCar}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+                onClick={handleModalOpen}
               >
-                <DialogTitle id="alert-dialog-title">
-                  {"Select your car"}
-                </DialogTitle>
-                <DialogContent>
-                  <DialogContentText
-                    color="black"
-                    id="alert-dialog-description"
-                  >
-                    <TextField
-                      sx={{ paddingBottom: "20px" }}
-                      id="outlined-basic"
-                      label="Enter Your PostCode"
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                    />
-                    <TextField
-                      sx={{ paddingBottom: "20px" }}
-                      id="outlined-select-enginesize"
-                      select
-                      label="Products"
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                    >
-                      {enginesize.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                    <TextField
-                      sx={{ paddingBottom: "20px" }}
-                      id="outlined-select-currency"
-                      select
-                      label="Car Make"
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                    />
-                    <TextField
-                      sx={{ paddingBottom: "20px" }}
-                      id="outlined-select-currency"
-                      select
-                      label="Car Model"
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                    />
-                    <TextField
-                      sx={{ paddingBottom: "20px" }}
-                      id="outlined-select-currency"
-                      select
-                      label="Engine Size"
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                    />
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose} fullWidth>
-                    Get Prices
-                  </Button>
-                </DialogActions>
-              </Dialog>
-              {/* <Button variant="outlined" fullWidth onClick={handleClickOpenServices} sx={{ fontWeight: '100', marginBottom: '13px', paddingLeft: '10px', display: 'flex', justifyContent: 'flex-start', color: 'white', border: '1px solid white' }}>
-                                Service
-                            </Button>
-                            <Dialog open={openServices} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-                                <DialogTitle id="alert-dialog-title">{"Choose your services"}</DialogTitle>
-                                <DialogContent>
-                                    <DialogContentText color="black" id="alert-dialog-description">
-                                        You will be able to make changes to your selection on the next page, garage prices will update accordingly.
-                                    </DialogContentText>
-                                    <Typography color="black" fontSize={22} bgcolor="grey">
-                                        MOT & Services
-                                    </Typography>
-                                </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleClose} fullWidth>
-                                        Select
-                                    </Button>
-                                </DialogActions>
-                            </Dialog> */}
-              {/* <TextFieldElement id="outlined-basic" name="postcode" label="Enter Your PostCode" variant="outlined" fullWidth size="small" /> */}
-            </CardContent>
-            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-              <Box
-                sx={{ display: "flex", justifyContent: "center", width: "93%" }}
-              >
-                <DefaultButton
-                  variant="contained"
-                  sx={btnWrapper}
-                  type="submit"
-                  fullWidth
-                  onClick={handleModalOpen}
-                >
-                  Get Quote
-                </DefaultButton>
-              </Box>
-              {/* <Button size="small" type='submit' fullWidth>COMPARE PRICES INSTANTLY</Button> */}
-            </CardActions>
-          </Card>
-        </Box>
-      </FormContainer>
+                Get Quote
+              </DefaultButton>
+            </Box>
+          </CardActions>
+        </Card>
+      </Box>
       <BasicModal open={isModalOpen} handleClose={handleModalClose}>
         <>
           <Stack>
@@ -261,12 +123,12 @@ const Form = ({}: PropsFrom) => {
                 />
               </Box>
               <Stack spacing={1}>
-                <Typography fontWeight={600}>NA59BFJ</Typography>
+                <Typography fontWeight={600}>{carDetails.VRN}</Typography>
                 <Typography fontWeight={600}>
-                  CITREON,GRAND C4 PICASSO VTR HDI(110),2009
+                  {`${carDetails.Make}, ${carDetails.Model}`}
                 </Typography>
                 <Typography fontWeight={600}>
-                  1560 cc Diesel, 5 Door,Automatic
+                  {`${carDetails.EngineSize}cc, ${carDetails.FuelType}, ${carDetails.TransmissionType}`}
                 </Typography>
               </Stack>
             </Box>

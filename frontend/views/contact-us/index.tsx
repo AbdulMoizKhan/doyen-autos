@@ -19,6 +19,7 @@ import { validationSchema } from "./schema";
 import TextField from "../../components/text-field";
 import DefaultButton from "../../components/default-button";
 import PlaceIcon from "@mui/icons-material/Place";
+import axios from 'axios'
 
 const containerWrapper: SxProps = {
   backgroundColor: "background.paper",
@@ -52,8 +53,13 @@ const ContactUsPage = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await axios.post('http://localhost:3000/api/submitcontactus', {...values},);
+        console.log("contact-us: ",values, "response : " , response);
+      } catch (error) {
+        console.log("Error in submit contact us : ", error);
+      }
     },
   });
 

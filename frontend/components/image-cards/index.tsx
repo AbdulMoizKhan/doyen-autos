@@ -88,8 +88,6 @@ const ImageCards = () => {
                 slidesPerView={'auto'}
                 rewind={true}
                 navigation={true} modules={[Navigation]}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
                 >
                     {reviews.map((review, index) => (
                         <SwiperSlide>
