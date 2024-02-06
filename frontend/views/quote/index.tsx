@@ -7,10 +7,9 @@ import DefaultButton from "../../components/default-button";
 import DatePicker from "../../components/date-picker";
 import MultipleSelect from "../../components/select-box";
 import { serviceOptions } from "../../utils/helpers";
-import axios from 'axios'
-const imageStyle: SxProps = {
-  display: { md: "block", xs: "none" },
-};
+import axios from "axios";
+import { useAlert } from "react-alert";
+
 
 const containerWrapper: SxProps = {
   backgroundColor: "whitesmoke",
@@ -47,17 +46,23 @@ const initialValues = {
 };
 
 const QuotePage = () => {
+  const [isLoading, setBtnLoader] = useState(false);
+  const alert = useAlert();
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      setBtnLoader(true);
       try {
-        console.log(values)
-        const response  = await axios.post ('http://localhost:3000/api/quote', {...values});
+        const response = await axios.post("http://localhost:3000/api/quote", {
+          ...values,
+        });
+        alert.success(response.data)
+        setBtnLoader(false);
+        resetForm()
       } catch (error) {
-        
+        setBtnLoader(false);
       }
-      
     },
   });
 
@@ -229,6 +234,7 @@ const QuotePage = () => {
                       variant="contained"
                       sx={btnWrapper}
                       type="submit"
+                      isLoading={isLoading}
                     >
                       Get Quote
                     </DefaultButton>

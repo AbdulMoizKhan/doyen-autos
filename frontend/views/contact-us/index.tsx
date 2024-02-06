@@ -1,25 +1,21 @@
 import { useState } from "react";
 import {
   Box,
-  FormHelperText,
   Grid,
   Typography,
-  FormControl,
   SxProps,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   Container,
-  Button,
   Stack,
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { useFormik } from "formik";
 import { validationSchema } from "./schema";
 import TextField from "../../components/text-field";
 import DefaultButton from "../../components/default-button";
 import PlaceIcon from "@mui/icons-material/Place";
-import axios from 'axios'
+import axios from "axios";
+import { useAlert } from "react-alert";
 
 const containerWrapper: SxProps = {
   backgroundColor: "background.paper",
@@ -49,16 +45,24 @@ const initialValues = {
 };
 
 const ContactUsPage = () => {
+  const alert = useAlert();
   const [isLoading, setBtnLoader] = useState(false);
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      setBtnLoader(true);
       try {
-        const response = await axios.post('http://localhost:3000/api/submitcontactus', {...values},);
-        console.log("contact-us: ",values, "response : " , response);
+        const response = await axios.post(
+          "http://localhost:3000/api/submitcontactus",
+          { ...values }
+        );
+        setBtnLoader(false);
+        alert.success(response?.data);
+        resetForm();
       } catch (error) {
-        console.log("Error in submit contact us : ", error);
+        alert.error(error);
+        setBtnLoader(false);
       }
     },
   });
@@ -66,7 +70,12 @@ const ContactUsPage = () => {
   return (
     <Box sx={{ pt: "95px" }}>
       <Box component="div" sx={{ m: { xs: 2, sm: 8 } }}>
-        <Typography variant="h1" textAlign="center" sx={{ mt: 4 }} data-aos="zoom-in">
+        <Typography
+          variant="h1"
+          textAlign="center"
+          sx={{ mt: 4 }}
+          data-aos="zoom-in"
+        >
           Contact Us
         </Typography>
         <Typography
@@ -192,6 +201,16 @@ const ContactUsPage = () => {
                   <Typography variant="body1">
                     50 Stronend Street Glasgow G22 6AR{" "}
                   </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <LocalPhoneIcon />
+                  <Typography variant="body1">0141 6110816</Typography>
                 </Box>
 
                 <Box sx={{ width: "380", height: "280" }}>
