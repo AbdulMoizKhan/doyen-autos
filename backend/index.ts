@@ -11,11 +11,12 @@ app.use(cors({
   origin: 'http://localhost:3001'
 }));
 
-
 app.get('/api/data', async (req, res) => {
+    const { VRMs } = req.query
+    console.log(VRMs)
     try {
       const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
-      const VRM = "KM14AKK";
+      const VRM = VRMs;
       const DataPackage = "VehicleData";
       const QueryStringOptionals = "&api_nullitems=1";
       const ApiVersion = 2;
@@ -24,7 +25,7 @@ app.get('/api/data', async (req, res) => {
       const response = await axios.get(url);
       if (response) {
         res.json({
-          VRN : response.data.Request.DataKeys.Vrm,
+          VRMs : response.data.Request.DataKeys.Vrm,
           Make : response.data.Response.DataItems.ClassificationDetails.Dvla.Make,
           Model: response.data.Response.DataItems.ClassificationDetails.Dvla.Model,
           FuelType: response.data.Response.DataItems.VehicleRegistration.FuelType,
@@ -52,7 +53,7 @@ app.post('/api/submitcontactus', async(req, res) => {
     let info = await transporter.sendMail({
       from: 'Doyen Autos <doyenautos@gmail.com>', 
       to: req.body.email, 
-      subject: `Message From ${req.body.firstname} ${req.body.lastName}`, 
+      subject: `Message From Doyen Autos`,
       html: `
         <html>
           <head>

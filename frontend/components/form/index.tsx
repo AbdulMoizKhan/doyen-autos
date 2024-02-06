@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Box,
   Card,
-  TextField,
   Typography,
   CardContent,
   CardActions,
@@ -14,72 +13,85 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import DefaultButton from "../default-button";
 import BasicModal from "../modal";
 import axios from 'axios';
-
+import { useFormik } from "formik";
+import { validationSchema } from "./schema";
+import TextField from "../text-field";
 const btnWrapper: SxProps = {
   padding: "20px 20px",
   borderRadius: "8px",
   backgroundColor: "tomato",
 };
 
+const initialValues = {
+  VRMs: "",
+};
+
 interface PropsFrom { }
 
 const Form = ({ }: PropsFrom) => {
-  const [carDetails, setCarDetails] = useState({ VRN: "", Make: "", Model: "", FuelType: "", TransmissionType: "", EngineSize: "", Doors: "" });
+  const [carDetails, setCarDetails] = useState({ VRMs: "", Make: "", Model: "", FuelType: "", TransmissionType: "", EngineSize: "", Doors: "" });
   const [isModalOpen, setModalOpen] = useState(false);
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/data', {
+          params: { ...values }
+        });
+        setCarDetails(response.data);
+        if (response.status === 200) {
+          setModalOpen(true)
+        }
+      } catch (error) {
 
-  const handleModalOpen = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/data');
-      setCarDetails(response.data);
-      setModalOpen(true);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+      }
 
-  };
+    },
+  });
 
   const handleModalClose = () => {
     setModalOpen(false);
   };
-
   return (
     <>
-      <Box sx={{ minWidth: 275 }}>
-        <Card sx={{ bgcolor: "#89878673" }} data-aos="flip-right">
-          <CardContent sx={{ padding: "20px 20px 8px 20px" }}>
-            <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
-              Let's Go
-            </Typography>
-            <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
-              We'll help you save money on car repairs in just a few clicks.
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Registration Number"
-              label="Registration Number"
-              type="text"
-              name="VRN"
-              sx={{color:'white'}}
-              fullWidth
-            />
-          </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-            <Box
-              sx={{ display: "flex", justifyContent: "center", width: "93%" }}
-            >
-              <DefaultButton
-                variant="contained"
-                sx={btnWrapper}
-                type="submit"
+      <form onSubmit={formik.handleSubmit}>
+        <Box sx={{ minWidth: 275 }}>
+          <Card sx={{ bgcolor: "#89878673" }} data-aos="flip-right">
+            <CardContent sx={{ padding: "20px 20px 8px 20px" }}>
+              <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
+                Let's Go
+              </Typography>
+              <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
+                We'll help you save money on car repairs in just a few clicks.
+              </Typography>
+              <TextField
+                variant="outlined"
+                placeholder="Registration Number"
+                type="text"
+                name="VRMs"
                 fullWidth
-                onClick={handleModalOpen}
+                sx={{ ".MuiInputBase-input": { color: 'white' } }}
+                formik={formik}
+              />
+            </CardContent>
+            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+              <Box
+                sx={{ display: "flex", justifyContent: "center", width: "93%" }}
               >
-                Get Quote
-              </DefaultButton>
-            </Box>
-          </CardActions>
-        </Card>
-      </Box>
+                <DefaultButton
+                  variant="contained"
+                  sx={btnWrapper}
+                  type="submit"
+                  fullWidth
+                >
+                  Get Quote
+                </DefaultButton>
+              </Box>
+            </CardActions>
+          </Card>
+        </Box>
+      </form>
       <BasicModal open={isModalOpen} handleClose={handleModalClose}>
         <>
           <Stack>
@@ -124,12 +136,12 @@ const Form = ({ }: PropsFrom) => {
                 />
               </Box>
               <Stack spacing={1}>
-                <Typography fontWeight={600}>{carDetails.VRN}</Typography>
+                <Typography fontWeight={600}>{carDetails.VRMs}</Typography>
                 <Typography fontWeight={600}>
                   {`${carDetails.Make}, ${carDetails.Model}`}
                 </Typography>
                 <Typography fontWeight={600}>
-                  {`${carDetails.EngineSize}cc, ${carDetails.FuelType}, ${carDetails.TransmissionType}`}
+                  {`${carDetails.EngineSize}cc, ${carDetails.FuelType},${carDetails.Doors} Doors , ${carDetails.TransmissionType}`}
                 </Typography>
               </Stack>
             </Box>
