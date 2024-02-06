@@ -77,7 +77,7 @@ const ImageCards = () => {
     // const isMobileOrLaptop = useMediaQuery({ query: '(min-width: 700px)' })
 
     return (
-        <>
+        <Container>
             <Stack direction="column" sx={{ marginBottom: '20px' }}>
                 <Typography variant="h3" textAlign={'center'}>
                     Reviews from our loyal customer
@@ -102,7 +102,7 @@ const ImageCards = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-        </>
+        </Container>
     );
 };
 

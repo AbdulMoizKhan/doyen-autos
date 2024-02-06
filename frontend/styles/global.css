@@ -78,7 +78,7 @@ max-height:7px;
 
 .primaryCTA{
   height: 60px !important;
-  width: 200px !important;
+  width: 220px !important;
   font-size: 18px !important;
   font-family: Helvetica Neue !important;
   border: 1px solid #020202 !important;
@@ -151,7 +151,8 @@ line-height: 28.5px !important;
 }
 
 .box-container_btn2{
-  color: #5F6F86 !important;
+  color: black !important;
+  background: white !important;
 }
 .box-container_heaidng{
   color: #FFF !important;
@@ -268,7 +269,12 @@ line-height: 28.5px !important;
   max-width: 320px;
   margin: 0px 50px;
 }
-
+.swiper-button-next{
+  color: #000 !important;
+}
+.swiper-button-prev{
+  color: #000 !important;
+}
 @media only screen and (max-width: 550px) {
   .box-container_body{
     color: #C4C4C4 !important;

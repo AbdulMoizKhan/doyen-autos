@@ -59,6 +59,7 @@ const Form = ({ }: PropsFrom) => {
               label="Registration Number"
               type="text"
               name="VRN"
+              sx={{color:'white'}}
               fullWidth
             />
           </CardContent>

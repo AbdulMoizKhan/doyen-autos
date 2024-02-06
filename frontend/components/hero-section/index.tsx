@@ -30,7 +30,7 @@ const ContainerResposive: SxProps = {
   //  pt: {md:'225px', xs:'120px'},
 }
 const formPadding: SxProps = {
-  pt: { xs: '50px' },
+  pt: { xs: '30px', md:'50px' },
   maxWidth: { xs: '400px' },
   justifyContent: { xs: 'center' }
 }
@@ -42,28 +42,38 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
     <>
       <Container sx={ContainerResposive} >
         {isMobileOrLaptop == true ? (
-        <Box >
-          <Image src={car} alt='helow' style={{
-            color: 'transparent',
-            position: 'absolute',
-            zIndex: '-1',
-            width: '100%',
-            filter: 'brightness(0.5)',
-            height: '100vh',
-            top: '0px',
-            left: '0px'
-          }}
-          />
-        </Box>) : (
+          <Box >
+            <Image src={car} alt='helow' style={{
+              color: 'transparent',
+              position: 'absolute',
+              zIndex: '-1',
+              width: '100%',
+              filter: 'brightness(0.5)',
+              height: '100vh',
+              top: '0px',
+              left: '0px'
+            }}
+            />
+          </Box>) : (
           <Box sx={{ backgroundColor: 'black', height: '100vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
         )}
         <Grid container height={'100vh'} alignContent={'center'} justifyContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
-            <Typography data-aos="fade-up" variant="h1" className='white' gutterBottom sx={{ fontWeight: '800', lineHeight: '1.1' }} dangerouslySetInnerHTML={{ __html: (heroTittle.includes("Doyen Auto")) ? `${heroTittle} ` : '' }} />
-            <Typography data-aos="fade-up" variant="h4" className='white' textAlign={'left'} sx={{ pr: {xs:'0px',md:'60px'}}} gutterBottom>
+            <Typography
+              data-aos="fade-up"
+              variant="h1"
+              className='white'
+              gutterBottom
+              sx={{ fontWeight: '800', lineHeight: '1.1',textAlign:{xs:'center',md:'left'} }}
+              dangerouslySetInnerHTML={{ __html: (heroTittle.includes("Doyen Auto")) ? `${heroTittle} ` : '' }} />
+            <Typography
+              data-aos="fade-up"
+              variant="h4"
+              className='white'
+              sx={{ pr: { xs: '0px', md: '60px'} ,textAlign:{xs:'center ',md:'left'} }}
+              gutterBottom>
               {heroSubContent}
             </Typography>
-            {/* <Button className='primaryCTA'>Get Quote</Button> */}
           </Grid>
           <Grid sx={formPadding} item md={4} xs={12}>
             <Form />

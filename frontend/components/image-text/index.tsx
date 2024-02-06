@@ -5,6 +5,7 @@ import wehelp from '../../assests/wehelp.png';
 import HorizontalCard from '../horizontal-card';
 import Outline from '../../assests/Outline.png'
 import Setting from '../../assests/Setting.png'
+import { useRouter } from 'next/router';
 interface PropsImageText {
     heading?: string
     subheading?: string
@@ -19,6 +20,7 @@ const imgageResponsive: SxProps = {
   };
 
 const ImageText = ({ heading, subheading }: PropsImageText) => {
+    const router = useRouter()
     return (
         <>
             <Container sx={{ pt: '90px' }}>
@@ -28,8 +30,8 @@ const ImageText = ({ heading, subheading }: PropsImageText) => {
                 <Typography className='subHeadingSecond grey' gutterBottom>
                     {subheading}
                 </Typography>
-                <Stack direction={'row'} sx={{alignItems:'center'}}>
-                    <Box flexDirection={'column'}>
+                <Stack direction={'row'} spacing={5} sx={{alignItems:'center'}}>
+                    <Box flexDirection={'column'} sx={{display:'flex',gap:'10px'}}>
                         <HorizontalCard
                             chooseHeading="Expertise: "
                             chooseDetail="Our team of certified technicians brings unparalleled expertise to every service, ensuring your vehicle receives the attention it deserves."
@@ -52,7 +54,9 @@ const ImageText = ({ heading, subheading }: PropsImageText) => {
                             imageWidth={24}
                         />
                         <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
-                            <Button className='primaryCTA black'>SEE OUR REVIEW</Button>
+                            <Button 
+                            className='primaryCTA black'
+                            onClick={() => router.push('/services')}>SERVICES WE OFFER</Button>
                         </Box>
                     </Box>
                     <Box sx={imgageResponsive}>
