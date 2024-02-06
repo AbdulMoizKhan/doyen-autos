@@ -53,18 +53,42 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'abdulmoizkhan140@gmail.com',
-                pass: 'hmzk oiwx ohaa gwtv'
+                user: 'doyenautos@gmail.com',
+                pass: 'wsaz iehu axul ocau'
             }
         });
         let info = yield transporter.sendMail({
-            from: 'abdulmoizkhan140@gmail.com',
+            from: 'doyenautos@gmail.com',
             to: req.body.email,
             subject: `Message From ${req.body.firstname}`,
             text: `${req.body.message}`,
             html: `<b>${req.body.firstname}</b><br/><br/>${req.body.message}`
         });
-        console.log('Message sent: %s', info.messageId);
+        res.status(200).send('Email Successfully sent');
+        res.end();
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).send('Server error');
+    }
+}));
+app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let quoteTransporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'doyenautos@gmail.com',
+                pass: 'wsaz iehu axul ocau'
+            }
+        });
+        let info = yield quoteTransporter.sendMail({
+            from: 'abdulmoizkhan140@gmail.com',
+            to: req.body.email,
+            subject: 'Service Quote Request',
+            text: `Dear ${req.body.firstname} ${req.body.lastName},\n\nThank you for your service quote request. Here are the details:\n\nRegistration No: ${req.body.registrationNo}\nMake: ${req.body.make}\nModel: ${req.body.model}\nEngine Size: ${req.body.engineSize}\nPost Code: ${req.body.postCode}\nServices: ${req.body.services.join(', ')}\nPhone No: ${req.body.phoneNo}\nAddress: ${req.body.address}\nDate: ${new Date(req.body.date).toLocaleString()}\nMessage: ${req.body.message}\n\nWe will get back to you as soon as possible.\n\nBest regards,\nThe Doyen Autos Team`,
+            html: `<p>Dear ${req.body.firstname} ${req.body.lastName},</p><p>Thank you for your service quote request. Here are the details:</p><ul><li>Registration No: ${req.body.registrationNo}</li><li>Make: ${req.body.make}</li><li>Model: ${req.body.model}</li><li>Engine Size: ${req.body.engineSize}</li><li>Post Code: ${req.body.postCode}</li><li>Services: ${req.body.services.join(', ')}</li><li>Phone No: ${req.body.phoneNo}</li><li>Address: ${req.body.address}</li><li>Date: ${new Date(req.body.date).toLocaleString()}</li><li>Message: ${req.body.message}</li></ul><p>We will get back to you as soon as possible.</p><p>Best regards,<br/>The Doyen Autos Team</p>`
+        });
+        res.status(200).send("Quote has been mailed successfully");
         res.end();
     }
     catch (error) {

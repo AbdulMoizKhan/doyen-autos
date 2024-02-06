@@ -7,7 +7,7 @@ import DefaultButton from "../../components/default-button";
 import DatePicker from "../../components/date-picker";
 import MultipleSelect from "../../components/select-box";
 import { serviceOptions } from "../../utils/helpers";
-
+import axios from 'axios'
 const imageStyle: SxProps = {
   display: { md: "block", xs: "none" },
 };
@@ -50,8 +50,14 @@ const QuotePage = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        console.log(values)
+        const response  = await axios.post ('http://localhost:3000/api/quote', {...values});
+      } catch (error) {
+        
+      }
+      
     },
   });
 
