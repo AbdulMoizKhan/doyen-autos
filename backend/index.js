@@ -20,7 +20,7 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:3001'
+    origin: ['https://doyen-autos-71yu.vercel.app', 'https://doyen-autos-hmq4.vercel.app']
 }));
 app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { VRMs } = req.query;
