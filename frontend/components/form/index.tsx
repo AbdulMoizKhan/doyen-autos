@@ -36,7 +36,7 @@ const Form = ({ }: PropsFrom) => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.get('http://localhost:3000/api/data', {
+        const response = await axios.get('https://doyen-autos-71yu.vercel.app/api/data', {
           params: { ...values }
         });
         setCarDetails(response.data);

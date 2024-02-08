@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3001'
+  origin: 'https://doyen-autos-hmq4.vercel.app'
 }));
 
 app.get('/api/data', async (req, res) => {

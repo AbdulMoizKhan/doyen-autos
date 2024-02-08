@@ -54,7 +54,7 @@ const QuotePage = () => {
     onSubmit: async (values, { resetForm }) => {
       setBtnLoader(true);
       try {
-        const response = await axios.post("http://localhost:3000/api/quote", {
+        const response = await axios.post("https://doyen-autos-71yu.vercel.app/api/quote", {
           ...values,
         });
         alert.success(response.data)
