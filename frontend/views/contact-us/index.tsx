@@ -54,7 +54,7 @@ const ContactUsPage = () => {
       setBtnLoader(true);
       try {
         const response = await axios.post(
-          "https://doyen-autos-71yu.vercel.app/api/submitcontactus",
+          "https://localhost:3000/api/submitcontactus",
           { ...values }
         );
         setBtnLoader(false);
