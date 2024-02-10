@@ -12,10 +12,12 @@ import CheckIcon from "@mui/icons-material/Check";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import DefaultButton from "../default-button";
 import BasicModal from "../modal";
-import axios from 'axios';
+import axios from "axios";
 import { useFormik } from "formik";
 import { validationSchema } from "./schema";
 import TextField from "../text-field";
+import { useAlert } from "react-alert";
+
 const btnWrapper: SxProps = {
   padding: "20px 20px",
   borderRadius: "8px",
@@ -26,27 +28,41 @@ const initialValues = {
   VRMs: "",
 };
 
-interface PropsFrom { }
+interface PropsFrom {}
 
-const Form = ({ }: PropsFrom) => {
-  const [carDetails, setCarDetails] = useState({ VRMs: "", Make: "", Model: "", FuelType: "", TransmissionType: "", EngineSize: "", Doors: "" });
+const Form = ({}: PropsFrom) => {
+  const alert = useAlert();
+  const [carDetails, setCarDetails] = useState({
+    VRMs: "",
+    Make: "",
+    Model: "",
+    FuelType: "",
+    TransmissionType: "",
+    EngineSize: "",
+    Doors: "",
+  });
   const [isModalOpen, setModalOpen] = useState(false);
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
+      values.VRMs = values.VRMs.toUpperCase();
+      console.log(values);
       try {
-        const response = await axios.get('https://doyen-autos-71yu.vercel.app/api/data', {
-          params: { ...values }
-        });
+        const response = await axios.get(
+          "http://localhost:3000/api/data",
+          {
+            params: { ...values },
+          }
+        );
         setCarDetails(response.data);
         if (response.status === 200) {
-          setModalOpen(true)
+          alert.success("Your car Details successfully found");
+          setModalOpen(true);
         }
       } catch (error) {
-
+        alert.error("Your car details are not found");
       }
-
     },
   });
 
@@ -71,7 +87,7 @@ const Form = ({ }: PropsFrom) => {
                 type="text"
                 name="VRMs"
                 fullWidth
-                sx={{ ".MuiInputBase-input": { color: 'white' } }}
+                sx={{ ".MuiInputBase-input": { color: "white" } }}
                 formik={formik}
               />
             </CardContent>
