@@ -17,7 +17,6 @@ const cors_1 = __importDefault(require("cors"));
 const axios = require('axios');
 const nodemailer = require("nodemailer");
 const app = (0, express_1.default)();
-const { Whatsapp } = require('whatsapp-web.js');
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
@@ -54,7 +53,6 @@ app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     console.log("helow");
 }));
 app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const whatsapp = new Whatsapp();
     try {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -111,20 +109,6 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
           </body>
         </html>`
         });
-        const whatsapp = new Whatsapp();
-        yield whatsapp.connect();
-        yield whatsapp.sendTextMessage({
-            to: ['+447760926245', req.body.phoneNo],
-            content: `
-        Dear ${req.body.firstname} ${req.body.lastName},
-        Thank you for contacting us regarding our services.
-        We have received your message:
-        ${req.body.message}
-        We will get back to you as soon as possible.
-        Best regards,
-        Doyen Autos Team`
-        });
-        yield whatsapp.disconnect();
         res.status(200).send('Email Successfully sent');
         res.end();
     }
@@ -134,7 +118,6 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
     }
 }));
 app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const whatsapp = new Whatsapp();
     try {
         let quoteTransporter = nodemailer.createTransport({
             service: 'gmail',
@@ -209,29 +192,6 @@ app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function*
         </html>
       `
         });
-        yield whatsapp.connect();
-        yield whatsapp.sendTextMessage({
-            to: ['+447760926245', req.body.phoneNo],
-            content: `          
-    
-         Dear ${req.body.firstname} ${req.body.lastName}
-          Thank you for your service quote request. We are pleased to confirm the following details:
-          
-            Registration No: ${req.body.registrationNo}
-            Make: ${req.body.make}
-            Model: ${req.body.model}
-            Engine Size: ${req.body.engineSize}
-            Post Code: ${req.body.postCode}
-            Services: ${req.body.services.join(', ')}
-            Phone No: ${req.body.phoneNo}
-            Address: ${req.body.address}
-            Date: ${new Date(req.body.date).toLocaleString()}
-            Message: ${req.body.message}
-          
-          We will proceed with the requested services and get back to you with further details.
-          Best regards,<br/>The Doyen Autos Team`
-        });
-        yield whatsapp.disconnect();
         res.status(200).send("Quote has been mailed and WhatsApp message sent successfully");
     }
     catch (error) {
