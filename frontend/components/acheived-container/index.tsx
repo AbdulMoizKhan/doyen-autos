@@ -20,7 +20,7 @@ alignItems:'center',
 
 const boxStructure2 : SxProps ={
 display:'flex',
-paddingRight:'60px',
+paddingRight:{xs:0 , md:6},
 flexDirection:'column',
 justifyContent:'space-evenly'
 }

@@ -309,3 +309,18 @@ line-height: 28.5px !important;
     font-size: 8px !important;
   }
 }
+@media only screen and (max-width: 425px) {
+  .swiper-button-next{
+    display: none !important;
+  }
+  .swiper-button-prev{
+    display: none !important;
+  }
+  .swiper-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    max-width: 320px;
+    margin: 0px 0px;
+  }
+}

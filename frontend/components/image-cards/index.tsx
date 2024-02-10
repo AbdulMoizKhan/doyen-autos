@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Container, Stack, Typography } from '@mui/material';
+import { Button, Container, Stack, Typography, useMediaQuery } from '@mui/material';
 import Cards from '../cards';
 import human from '../../assests/human.jpeg';
 import human2 from '../../assests/human2.png';
@@ -9,7 +9,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-
 
 const reviews = [
     {
@@ -74,7 +73,7 @@ const reviews = [
 
 const ImageCards = () => {
     // const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' })
-    // const isMobileOrLaptop = useMediaQuery({ query: '(min-width: 700px)' })
+    // const isMobile = useMediaQuery({ query: '(min-width: 425px)' })
 
     return (
         <Container>
@@ -86,8 +85,23 @@ const ImageCards = () => {
             <Swiper
                 spaceBetween={0}
                 slidesPerView={'auto'}
+                breakpoints={{
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 20,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                    },
+                  }} 
+                navigation      
                 rewind={true}
-                navigation={true} modules={[Navigation]}
+                modules={[Navigation]}
                 >
                     {reviews.map((review, index) => (
                         <SwiperSlide>
