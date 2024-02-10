@@ -9,6 +9,7 @@ import MultipleSelect from "../../components/select-box";
 import { serviceOptions } from "../../utils/helpers";
 import axios from "axios";
 import { useAlert } from "react-alert";
+import { useRouter } from "next/router";
 
 
 const containerWrapper: SxProps = {
@@ -46,6 +47,7 @@ const initialValues = {
 };
 
 const QuotePage = () => {
+  const router = useRouter();
   const [isLoading, setBtnLoader] = useState(false);
   const alert = useAlert();
   const formik = useFormik({
@@ -65,6 +67,19 @@ const QuotePage = () => {
       }
     },
   });
+
+  useEffect(() => {
+    const { VRMs, Make, Model, EngineSize } = router.query;
+    if (VRMs && Make && Model && EngineSize) {
+      formik.setValues({
+        ...formik.values,
+        registrationNo: VRMs.toString(),
+        make: Make.toString(),
+        model: Model.toString(),
+        engineSize: EngineSize.toString(),
+      });
+    }
+  }, [router.query]);
 
   const handleSelectionChange = (selectedValues: string[]) => {
     formik.setFieldValue("services", selectedValues);

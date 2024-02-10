@@ -64,7 +64,7 @@ const Form = () => {
           alert.error("An error occurred while processing your request.");
         }
       }
-    }
+    },
   });
 
   const handleModalClose = () => {
@@ -86,12 +86,7 @@ const Form = () => {
               <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
                 Let's Go
               </Typography>
-              <Typography
-                variant="body2"
-                gutterBottom
-                color={"white"}
-                sx={{}}
-              >
+              <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
                 We'll help you save money on car repairs in just a few clicks.
               </Typography>
               <TextField
@@ -108,9 +103,7 @@ const Form = () => {
                 }}
               />
             </CardContent>
-            <CardActions
-              sx={{ display: "flex", justifyContent: "center" }}
-            >
+            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
               <Box
                 sx={{ display: "flex", justifyContent: "center", width: "93%" }}
               >
@@ -141,7 +134,9 @@ const Form = () => {
               <Typography variant="h5" color="#3c3cf3">
                 {carDetails ? `Is this your car ?` : `Car details not found !`}
               </Typography>
-              {carDetails && <CheckIcon fontSize="large" sx={{ color: "#3c3cf3" }} />}
+              {carDetails && (
+                <CheckIcon fontSize="large" sx={{ color: "#3c3cf3" }} />
+              )}
             </Box>
             <Box
               sx={{
@@ -172,7 +167,7 @@ const Form = () => {
                 />
               </Box>
               <Stack spacing={1}>
-                {carDetails ?
+                {carDetails ? (
                   <>
                     <Typography fontWeight={600}>{carDetails?.VRMs}</Typography>
                     <Typography fontWeight={600}>
@@ -182,8 +177,12 @@ const Form = () => {
                       {`${carDetails?.EngineSize}cc, ${carDetails?.FuelType}, ${carDetails?.Doors} Doors , ${carDetails?.TransmissionType}`}
                     </Typography>
                   </>
-                  : <Typography fontWeight={600}>Your car was not found<br /> Enter the details manually</Typography>
-                }
+                ) : (
+                  <Typography fontWeight={600}>
+                    Your car was not found
+                    <br /> Enter the details manually
+                  </Typography>
+                )}
               </Stack>
             </Box>
             <Typography
@@ -193,11 +192,11 @@ const Form = () => {
                 textAlign: "center",
                 fontSize: "18px",
                 mt: 2,
-                cursor: 'pointer'
+                cursor: "pointer",
               }}
               onClick={() => {
                 setModalOpen(false);
-                alert.info("Try again")
+                alert.info("Try again");
               }}
             >
               {carDetails && `This is not my car`}
@@ -207,12 +206,19 @@ const Form = () => {
                 mt: 2,
                 p: 1,
                 border: "1px solid #8383dd",
-                cursor: 'pointer'
+                cursor: "pointer",
               }}
-              onClick={() => router.push("/quote")}
+              onClick={() => {
+                router.push({
+                  pathname: "/quote",
+                  query: { ...carDetails }, 
+                });
+              }}
             >
               <Typography fontSize="18px" textAlign="center" color="blue">
-                {carDetails ? `Yes ,This is my car` : `Enter the details manually`}
+                {carDetails
+                  ? `Yes ,This is my car`
+                  : `Enter the details manually`}
               </Typography>
             </Box>
           </Stack>
