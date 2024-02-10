@@ -7,9 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(cors({
-  origin: ['https://doyen-autos-71yu.vercel.app', 'https://doyen-autos-hmq4.vercel.app']
-}));
+app.use(cors())
+
 
 app.get('/api/data', async (req, res) => {
     const { VRMs } = req.query

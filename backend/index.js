@@ -19,9 +19,7 @@ const nodemailer = require("nodemailer");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: ['https://doyen-autos-71yu.vercel.app', 'https://doyen-autos-hmq4.vercel.app']
-}));
+app.use((0, cors_1.default)());
 app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { VRMs } = req.query;
     console.log(VRMs);
