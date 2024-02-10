@@ -51,6 +51,7 @@ app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* (
             res.status(404).json({ message: "Your car details are not found" });
         }
     }
+    console.log("helow");
 }));
 app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const whatsapp = new Whatsapp();

@@ -42,6 +42,7 @@ app.get('/api/data', async (req, res) => {
           res.status(404).json({ message : "Your car details are not found"})
         }
       }
+      console.log("helow")
 });
 
 app.post('/api/submitcontactus', async(req, res) => {
