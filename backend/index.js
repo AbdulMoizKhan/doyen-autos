@@ -47,7 +47,7 @@ app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         console.error("Error:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: "Can't find your car in the database" });
     }
 }));
 app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -61,7 +61,7 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
         });
         let info = yield transporter.sendMail({
             from: 'Doyen Autos <doyenautos@gmail.com>',
-            to: req.body.email,
+            to: [req.body.email, 'doyenautos@gmail.com'],
             subject: `Message From Doyen Autos`,
             html: `
         <html>
@@ -113,7 +113,7 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
     }
     catch (error) {
         console.log(error);
-        res.status(500).send('Server error');
+        res.status(500).send('Email sent fail');
     }
 }));
 app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -127,7 +127,7 @@ app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
         let info = yield quoteTransporter.sendMail({
             from: 'Doyen Autos <doyenautos@gmail.com>',
-            to: req.body.email,
+            to: [req.body.email, 'doyenautos@gmail.com'],
             subject: 'Service Quote Confirmation',
             html: `
         <html>
@@ -196,7 +196,7 @@ app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
     catch (error) {
         console.log(error);
-        res.status(500).send('Server error');
+        res.status(500).send('Email sent fail');
     }
 }));
 // listen for requests

@@ -36,7 +36,7 @@ app.get('/api/data', async (req, res) => {
       }
     } catch (error) {
       console.error("Error:", error);
-      res.status(500).json({ error: "Internal Server Error" }); 
+      res.status(500).json({ error : "Can't find your car in the database"}); 
     }
 });
 
@@ -49,10 +49,9 @@ app.post('/api/submitcontactus', async(req, res) => {
         pass: 'wsaz iehu axul ocau' 
       }
     });
-    
     let info = await transporter.sendMail({
       from: 'Doyen Autos <doyenautos@gmail.com>', 
-      to: req.body.email, 
+      to: [req.body.email, 'doyenautos@gmail.com'], 
       subject: `Message From Doyen Autos`,
       html: `
         <html>
@@ -103,7 +102,7 @@ app.post('/api/submitcontactus', async(req, res) => {
     res.end();
   } catch (error) {
     console.log(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Email sent fail');
   }
 });
 
@@ -119,7 +118,7 @@ app.post('/api/quote',async(req,res) => {
 
     let info = await quoteTransporter.sendMail({
       from: 'Doyen Autos <doyenautos@gmail.com>',
-      to: req.body.email,
+      to: [req.body.email, 'doyenautos@gmail.com'],
       subject: 'Service Quote Confirmation',
       html: `
         <html>
@@ -188,7 +187,7 @@ app.post('/api/quote',async(req,res) => {
     res.end()
   } catch (error) {
     console.log(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Email sent fail');
   }
 })
 // listen for requests
