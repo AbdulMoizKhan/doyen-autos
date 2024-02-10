@@ -17,6 +17,7 @@ const cors_1 = __importDefault(require("cors"));
 const axios = require('axios');
 const nodemailer = require("nodemailer");
 const app = (0, express_1.default)();
+const { Whatsapp } = require('whatsapp-web.js');
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
@@ -25,32 +26,34 @@ app.use((0, cors_1.default)({
 app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { VRMs } = req.query;
     console.log(VRMs);
-    try {
-        const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
-        const VRM = VRMs;
-        const DataPackage = "VehicleData";
-        const QueryStringOptionals = "&api_nullitems=1";
-        const ApiVersion = 2;
-        const url = `https://uk1.ukvehicledata.co.uk/api/datapackage/${DataPackage}?v=${ApiVersion}${QueryStringOptionals}&key_vrm=${VRM}&auth_apikey=${apiKey}`;
-        const response = yield axios.get(url);
-        if (response) {
-            res.json({
+    const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
+    const VRM = VRMs;
+    const DataPackage = "VehicleData";
+    const QueryStringOptionals = "&api_nullitems=1";
+    const ApiVersion = 2;
+    const url = `https://uk1.ukvehicledata.co.uk/api/datapackage/${DataPackage}?v=${ApiVersion}${QueryStringOptionals}&key_vrm=${VRM}&auth_apikey=${apiKey}`;
+    const response = yield axios.get(url);
+    console.log(response.status);
+    if (response.status === 200) {
+        if (VRMs === response.data.Request.DataKeys.Vrm && response.data.Response.StatusCode != "KeyInvalid") {
+            res.status(200).json({
                 VRMs: response.data.Request.DataKeys.Vrm,
                 Make: response.data.Response.DataItems.ClassificationDetails.Dvla.Make,
                 Model: response.data.Response.DataItems.ClassificationDetails.Dvla.Model,
                 FuelType: response.data.Response.DataItems.VehicleRegistration.FuelType,
                 TransmissionType: response.data.Response.DataItems.VehicleRegistration.TransmissionType,
                 EngineSize: response.data.Response.DataItems.SmmtDetails.EngineCapacity,
-                Doors: response.data.Response.DataItems.SmmtDetails.NumberOfDoors
+                Doors: response.data.Response.DataItems.SmmtDetails.NumberOfDoors,
+                message: "Your car Details are successfully found"
             });
         }
-    }
-    catch (error) {
-        console.error("Error:", error);
-        res.status(500).json({ error: "Can't find your car in the database" });
+        else {
+            res.status(404).json({ message: "Your car details are not found" });
+        }
     }
 }));
 app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const whatsapp = new Whatsapp();
     try {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -105,9 +108,22 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
               </div>
             </div>
           </body>
-        </html>
-      `
+        </html>`
         });
+        const whatsapp = new Whatsapp();
+        yield whatsapp.connect();
+        yield whatsapp.sendTextMessage({
+            to: ['+447760926245', req.body.phoneNo],
+            content: `
+        Dear ${req.body.firstname} ${req.body.lastName},
+        Thank you for contacting us regarding our services.
+        We have received your message:
+        ${req.body.message}
+        We will get back to you as soon as possible.
+        Best regards,
+        Doyen Autos Team`
+        });
+        yield whatsapp.disconnect();
         res.status(200).send('Email Successfully sent');
         res.end();
     }
@@ -117,6 +133,7 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
     }
 }));
 app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const whatsapp = new Whatsapp();
     try {
         let quoteTransporter = nodemailer.createTransport({
             service: 'gmail',
@@ -191,15 +208,36 @@ app.post('/api/quote', (req, res) => __awaiter(void 0, void 0, void 0, function*
         </html>
       `
         });
-        res.status(200).send("Quote has been mailed successfully");
-        res.end();
+        yield whatsapp.connect();
+        yield whatsapp.sendTextMessage({
+            to: ['+447760926245', req.body.phoneNo],
+            content: `          
+    
+         Dear ${req.body.firstname} ${req.body.lastName}
+          Thank you for your service quote request. We are pleased to confirm the following details:
+          
+            Registration No: ${req.body.registrationNo}
+            Make: ${req.body.make}
+            Model: ${req.body.model}
+            Engine Size: ${req.body.engineSize}
+            Post Code: ${req.body.postCode}
+            Services: ${req.body.services.join(', ')}
+            Phone No: ${req.body.phoneNo}
+            Address: ${req.body.address}
+            Date: ${new Date(req.body.date).toLocaleString()}
+            Message: ${req.body.message}
+          
+          We will proceed with the requested services and get back to you with further details.
+          Best regards,<br/>The Doyen Autos Team`
+        });
+        yield whatsapp.disconnect();
+        res.status(200).send("Quote has been mailed and WhatsApp message sent successfully");
     }
     catch (error) {
-        console.log(error);
-        res.status(500).send('Email sent fail');
+        console.error(error);
+        res.status(500).send('Failed to send quote and WhatsApp message');
     }
 }));
-// listen for requests
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

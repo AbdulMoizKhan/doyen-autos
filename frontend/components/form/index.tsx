@@ -17,6 +17,7 @@ import { useFormik } from "formik";
 import { validationSchema } from "./schema";
 import TextField from "../text-field";
 import { useAlert } from "react-alert";
+import { useRouter } from "next/router";
 
 const btnWrapper: SxProps = {
   padding: "20px 20px",
@@ -28,10 +29,9 @@ const initialValues = {
   VRMs: "",
 };
 
-interface PropsFrom {}
-
-const Form = ({}: PropsFrom) => {
+const Form = () => {
   const alert = useAlert();
+  const router = useRouter();
   const [carDetails, setCarDetails] = useState({
     VRMs: "",
     Make: "",
@@ -42,33 +42,41 @@ const Form = ({}: PropsFrom) => {
     Doors: "",
   });
   const [isModalOpen, setModalOpen] = useState(false);
+  const [VRMs, setVrms] = useState("");
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      values.VRMs = values.VRMs.toUpperCase();
-      console.log(values);
       try {
-        const response = await axios.get(
-          "http://localhost:3000/api/data",
-          {
-            params: { ...values },
-          }
-        );
+        const response = await axios.get("https://doyen-autos-71yu.vercel.app/api/data", {
+          params: { ...values },
+        });
         setCarDetails(response.data);
         if (response.status === 200) {
-          alert.success("Your car Details successfully found");
+          alert.success(response.data.message);
           setModalOpen(true);
         }
       } catch (error) {
-        alert.error("Your car details are not found");
+        if (error.response && error.response.status === 404) {
+          alert.error(error.response.data.message);
+          setModalOpen(true);
+        } else {
+          alert.error("An error occurred while processing your request.");
+        }
       }
-    },
+    }
   });
 
   const handleModalClose = () => {
     setModalOpen(false);
   };
+
+  const handleChange = (e) => {
+    const newValue = e.target.value.toUpperCase();
+    setVrms(newValue);
+    formik.handleChange(e);
+  };
+
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
@@ -78,20 +86,31 @@ const Form = ({}: PropsFrom) => {
               <Typography variant="h4" gutterBottom color={"white"} sx={{}}>
                 Let's Go
               </Typography>
-              <Typography variant="body2" gutterBottom color={"white"} sx={{}}>
-                We'll help you save money on car repairs in just a few clicks.
+              <Typography
+                variant="body2"
+                gutterBottom
+                color={"white"}
+                sx={{}}
+              >
+                We'll help you save money on car repairs in just a few clicks.
               </Typography>
               <TextField
                 variant="outlined"
                 placeholder="Registration Number"
                 type="text"
                 name="VRMs"
+                value={VRMs}
+                onChange={handleChange}
                 fullWidth
-                sx={{ ".MuiInputBase-input": { color: "white" } }}
-                formik={formik}
+                sx={{
+                  ".MuiInputBase-input": { color: "white" },
+                  textTransform: "uppercase",
+                }}
               />
             </CardContent>
-            <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+            <CardActions
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Box
                 sx={{ display: "flex", justifyContent: "center", width: "93%" }}
               >
@@ -99,6 +118,7 @@ const Form = ({}: PropsFrom) => {
                   variant="contained"
                   sx={btnWrapper}
                   type="submit"
+                  onClick={() => setCarDetails(null)}
                   fullWidth
                 >
                   Get Quote
@@ -119,9 +139,9 @@ const Form = ({}: PropsFrom) => {
               }}
             >
               <Typography variant="h5" color="#3c3cf3">
-                Is this your car ?
+                {carDetails ? `Is this your car ?` : `Car details not found !`}
               </Typography>
-              <CheckIcon fontSize="large" sx={{ color: "#3c3cf3" }} />
+              {carDetails && <CheckIcon fontSize="large" sx={{ color: "#3c3cf3" }} />}
             </Box>
             <Box
               sx={{
@@ -152,13 +172,18 @@ const Form = ({}: PropsFrom) => {
                 />
               </Box>
               <Stack spacing={1}>
-                <Typography fontWeight={600}>{carDetails.VRMs}</Typography>
-                <Typography fontWeight={600}>
-                  {`${carDetails.Make}, ${carDetails.Model}`}
-                </Typography>
-                <Typography fontWeight={600}>
-                  {`${carDetails.EngineSize}cc, ${carDetails.FuelType},${carDetails.Doors} Doors , ${carDetails.TransmissionType}`}
-                </Typography>
+                {carDetails ?
+                  <>
+                    <Typography fontWeight={600}>{carDetails?.VRMs}</Typography>
+                    <Typography fontWeight={600}>
+                      {`${carDetails?.Make}, ${carDetails?.Model}`}
+                    </Typography>
+                    <Typography fontWeight={600}>
+                      {`${carDetails?.EngineSize}cc, ${carDetails?.FuelType}, ${carDetails?.Doors} Doors , ${carDetails?.TransmissionType}`}
+                    </Typography>
+                  </>
+                  : <Typography fontWeight={600}>Your car was not found<br /> Enter the details manually</Typography>
+                }
               </Stack>
             </Box>
             <Typography
@@ -168,19 +193,26 @@ const Form = ({}: PropsFrom) => {
                 textAlign: "center",
                 fontSize: "18px",
                 mt: 2,
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                setModalOpen(false);
+                alert.info("Try again")
               }}
             >
-              This is not my car
+              {carDetails && `This is not my car`}
             </Typography>
             <Box
               sx={{
                 mt: 2,
                 p: 1,
                 border: "1px solid #8383dd",
+                cursor: 'pointer'
               }}
+              onClick={() => router.push("/quote")}
             >
               <Typography fontSize="18px" textAlign="center" color="blue">
-                Yes ,This is my car
+                {carDetails ? `Yes ,This is my car` : `Enter the details manually`}
               </Typography>
             </Box>
           </Stack>
