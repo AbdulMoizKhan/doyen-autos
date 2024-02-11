@@ -1,3 +1,4 @@
+require('dotenv').config();
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 const axios = require('axios');
@@ -14,7 +15,7 @@ app.get('/api/data', async (req, res) => {
     const { VRMs } = req.query
     console.log(VRMs)
  
-      const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
+      const apiKey = process.env.APIKEY;
       const VRM = VRMs;
       const DataPackage = "VehicleData";
       const QueryStringOptionals = "&api_nullitems=1";

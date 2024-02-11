@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require('dotenv').config();
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const axios = require('axios');
@@ -23,7 +24,7 @@ app.use((0, cors_1.default)());
 app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { VRMs } = req.query;
     console.log(VRMs);
-    const apiKey = "CFB3CE6C-C29D-4F74-A051-12CDD6E4B2AB";
+    const apiKey = process.env.APIKEY;
     const VRM = VRMs;
     const DataPackage = "VehicleData";
     const QueryStringOptionals = "&api_nullitems=1";
