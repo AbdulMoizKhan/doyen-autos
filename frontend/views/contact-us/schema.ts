@@ -7,7 +7,7 @@ export const validationSchema = Yup.object({
     .email("Invalid email format")
     .required("Email is required"),
   phoneNo: Yup.string()
-    .matches(/^\+44 \d{2} \d{4} \d{4}$/, "Required Format: +44 20 7123 4567")
+    .matches(/^\+\d{12}$/, "UK Number format required")
     .required("Phone Number is required"),
   message: Yup.string().required("Message is required"),
 });
