@@ -106,7 +106,7 @@ app.post('/api/submitcontactus', async(req, res) => {
     let info2 = await transporter.sendMail({
       from: 'Doyen Autos <doyenautos@gmail.com>', 
       to: 'doyenautos@gmail.com', 
-      subject: `Message From Doyen Autos`,
+      subject: `Message From ${req.body.firstname} ${req.body.lastName}`,
       html: `
         <html>
           <head>

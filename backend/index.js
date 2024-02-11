@@ -111,7 +111,7 @@ app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0,
         let info2 = yield transporter.sendMail({
             from: 'Doyen Autos <doyenautos@gmail.com>',
             to: 'doyenautos@gmail.com',
-            subject: `Message From Doyen Autos`,
+            subject: `Message From ${req.body.firstname} ${req.body.lastName}`,
             html: `
         <html>
           <head>
