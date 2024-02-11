@@ -56,7 +56,7 @@ app.post('/api/submitcontactus', async(req, res) => {
     });
     let info = await transporter.sendMail({
       from: 'Doyen Autos <doyenautos@gmail.com>', 
-      to: [req.body.email, 'doyenautos@gmail.com'], 
+      to: req.body.email, 
       subject: `Message From Doyen Autos`,
       html: `
         <html>
@@ -101,16 +101,63 @@ app.post('/api/submitcontactus', async(req, res) => {
             </div>
           </body>
         </html>`
-
     });
 
-    res.status(200).send('Email Successfully sent');
-    res.end();
+    let info2 = await transporter.sendMail({
+      from: 'Doyen Autos <doyenautos@gmail.com>', 
+      to: 'doyenautos@gmail.com', 
+      subject: `Message From Doyen Autos`,
+      html: `
+        <html>
+          <head>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+              }
+              .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+              }
+              .header {
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                border-radius: 5px 5px 0 0;
+              }
+              .content {
+                padding: 20px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="header">
+                <h1>Message from Doyen Autos</h1>
+              </div>
+              <div class="content">
+                <p>${req.body.firstname} ${req.body.lastName} has contacted Doyen Autos,</p>
+                <p>Contacting us regarding our services.</p>
+                <p><strong>Message:</strong> ${req.body.message}</p>
+                <p><strong>Email :</strong> ${req.body.email}</p>
+                <p><strong>Contact Number :</strong> ${req.body.phoneNo}</p>
+                <p>Best regards,<br/>Doyen Autos Team</p>
+              </div>
+            </div>
+          </body>
+        </html>`
+    });
+    res.status(200).send('Emails Successfully sent'); 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Email sent fail');
+    res.status(500).send('Email sending failed');
   }
 });
+
 
 app.post('/api/quote',async(req,res) => {
 
