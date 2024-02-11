@@ -8,9 +8,9 @@ import Service7 from "../../assests/Heating-Cooling.jpg";
 import Service8 from "../../assests/electric-repair.jpg";
 import Service9 from "../../assests/Towing-and-Recovery.jpg";
 import Service10 from "../../assests/man-customizing-car-1170x460.jpg";
-import Service11 from "../../assests/remapping.jpg";
+import Service11 from "../../assests/Remapping2.jpeg";
 import Service12 from "../../assests/Car-Key-Programming.jpg";
-import Service13 from "../../assests/auto-repair.jpg";
+import Service13 from "../../assests/others.jpeg";
 
 export const servicesData = [
   {
