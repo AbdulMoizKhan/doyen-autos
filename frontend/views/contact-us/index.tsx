@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useFormik } from "formik";
 import { validationSchema } from "./schema";
 import TextField from "../../components/text-field";
@@ -172,7 +173,7 @@ const ContactUsPage = () => {
                   border: "1px solid white",
                   borderRadius: "5px",
                 }}
-                spacing={4}
+                spacing={2}
                 data-aos="zoom-out"
               >
                 <Typography variant="h5">Contact Information</Typography>
@@ -186,7 +187,7 @@ const ContactUsPage = () => {
                 >
                   <EmailIcon />
                   <Typography variant="body1" sx={{ wordBreak: "break-all" }}>
-                    support@doyenautos.co.uk
+                  doyenautos@gmail.com
                   </Typography>
                 </Box>
 
@@ -211,6 +212,16 @@ const ContactUsPage = () => {
                 >
                   <LocalPhoneIcon />
                   <Typography variant="body1">0141 6110816</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <WhatsAppIcon />
+                  <Typography variant="body1">07760926245</Typography>
                 </Box>
 
                 <Box sx={{ width: "380", height: "280" }}>
