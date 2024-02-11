@@ -132,12 +132,6 @@ export default function Footer() {
               <Typography sx={copyrightWrapper} mt={2}>
                 Copyright <MdCopyright /> 2024. All rights reserved
               </Typography>
-              <Typography sx={copyrightWrapper}>
-                Created by
-                <Link href="" target="_blank">
-                  DSM
-                </Link>
-              </Typography>
             </Stack>
             <Stack
               direction={"row"}
