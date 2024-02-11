@@ -128,7 +128,7 @@ const Detail = () => {
         <Typography variant="subtitle2" fontWeight={700} data-aos="zoom-out">
           Experience the Doyen Auto Services difference. Visit our garage at 50,
           Stronend Street, G22 6AR <br />
-          Give us a call at 07760926245 or support@doyen.co.uk to schedule your
+          Give us a call at 07760926245 or doyenautos@gmail.com to schedule your
           next service appointment.
         </Typography>
         <Typography

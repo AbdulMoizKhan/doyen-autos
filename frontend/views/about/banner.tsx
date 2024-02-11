@@ -28,7 +28,7 @@ const Banner = () => {
             color: 'transparent',
             position: 'absolute',
             zIndex: '-1',
-            width: '108%',
+            width: '100%',
             filter: 'brightness(0.5)',
             height: '101vh',
             top: '65px',
@@ -39,7 +39,7 @@ const Banner = () => {
           <Box sx={{padding:'0px 26px' , backgroundColor: 'black', height: '50vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
         )}
           <Stack sx={{height:{ xs:'50vh' , md:'100vh' ,lg:'100vh'} , justifyContent:'center'}}>
-            <Typography
+            {/* <Typography
               data-aos="fade-up"
               sx={{
                 fontWeight: "700",
@@ -49,13 +49,13 @@ const Banner = () => {
               }}
             >
               About Us
-            </Typography>
+            </Typography> */}
             <Typography
               data-aos="fade-up"
               sx={{
                 fontWeight: "700",
                 lineHeight: "1.2",
-                fontSize: { xs: "20px", sm: "30px", md: "45px" },
+                fontSize: { xs: "20px", sm: "30px", md: "55px" },
                 color: "white",
                 mt: 8,
               }}
