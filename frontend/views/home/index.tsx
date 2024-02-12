@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
       <HeroSection
-        heroTittle={`Welcome to Doyen Auto Services`}
+        heroTittle={``}
         heroSubContent="At Doyen Auto Services, we warmly welcome you and your vehicle. As your trusted automotive partner, we prioritize your vehicle's upkeep. Whether it's routine maintenance, repairs, or diagnostics, we're committed to delivering top-notch service tailored to your needs."
         buttonText="Get Started"
       />
