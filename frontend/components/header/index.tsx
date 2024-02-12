@@ -81,7 +81,7 @@ export default function Header({ variant }: IHeader) {
           <Stack
             direction={"row"}
             alignItems={"center"}
-            justifyContent={"space-around"}
+            justifyContent={"space-between"}
           >
             <Link href="/">
               <Image src={Logo} alt="Logo" width={130} height={130} />
@@ -91,6 +91,7 @@ export default function Header({ variant }: IHeader) {
               alignItems={"center"}
               spacing={5}
               sx={navbarWrap}
+
             >
               {TextLinks?.map((text) => {
                 return (
@@ -111,7 +112,7 @@ export default function Header({ variant }: IHeader) {
                   />
                 );
               })}
-              <Box pl={10}>
+              {/* <Box pl={10}>
                 <DefaultButton
                   variant="contained"
                   sx={btnWrapper}
@@ -121,7 +122,7 @@ export default function Header({ variant }: IHeader) {
                 >
                   Get a Quote
                 </DefaultButton>
-              </Box>
+              </Box> */}
             </Stack>
 
             <IconButton
@@ -187,7 +188,7 @@ export default function Header({ variant }: IHeader) {
                       </ListItem>
                     ))}
                   </List>
-                  <Box
+                  {/* <Box
                     sx={{
                       display: "flex",
                       alignItems: "center",
@@ -204,7 +205,7 @@ export default function Header({ variant }: IHeader) {
                     >
                       Get a Quote
                     </DefaultButton>
-                  </Box>
+                  </Box> */}
                 </Box>
               </Box>
             </Drawer>
