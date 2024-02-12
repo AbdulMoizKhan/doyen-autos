@@ -70,7 +70,7 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
               data-aos="fade-up"
               variant="h4"
               className='white'
-              sx={{ pr: { xs: '0px', md: '60px'} ,textAlign:{xs:'center ',md:'left'} }}
+              sx={{ pr: { xs: '0px', md: '60px'} ,textAlign:{xs:'center ',md:'left'},lineHeight:'1.5' }}
               gutterBottom>
               {heroSubContent}
             </Typography>
