@@ -56,14 +56,12 @@ const Services = () => {
           mt={3}
           mb={3}
           sx={{ textAlign: "center", color: "tomato" }}
-          data-aos="zoom-out"
         >
           Schedule an Appointment Today!
         </Typography>
         <Typography
           variant="subtitle2"
           fontWeight={700}
-          data-aos="zoom-out"
           sx={{ padding: { xs: "0px 40px", sm: "0px 50px", md: "0px 70px" } }}
         >
           Whether your vehicle needs routine maintenance, urgent repairs, or

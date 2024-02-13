@@ -2,6 +2,7 @@ export const TextLinks = [
   { title: "Home", url: "/" },
   { title: "About Us", url: "/about" },
   { title: "Services", url: "/services" },
+  { title: "How It Works", url: "/how-it-works" },
   { title: "Contact Us", url: "/contact-us" },
 ];
 

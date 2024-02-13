@@ -52,6 +52,7 @@ export default function Footer() {
         { title: "Home", url: "/" },
         { title: "About Us", url: "/about" },
         { title: "Services", url: "/services" },
+        { title: "How it works", url: "//how-it-works" },
       ],
     },
     {
