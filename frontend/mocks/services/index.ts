@@ -14,16 +14,6 @@ import Service13 from "../../assests/others.jpeg";
 
 export const servicesData = [
   {
-    heading: "Routine Maintenance",
-    services: [
-      "• Oil Changes",
-      "• Oil Filter Change",
-      "• Fluid Checks and Top-Ups",
-      "• Air Filter Replacement",
-    ],
-    imgSrc: Service1.src,
-  },
-  {
     heading: "Diagnostic Services",
     services: [
       "• Engine Diagnostics",
@@ -34,15 +24,34 @@ export const servicesData = [
     imgSrc: Service2.src,
   },
   {
-    heading: "Brake Services",
+    heading: "Electrical System Repairs",
     services: [
-        
-      "• Brake Inspections",
-      "• Brake Pad Replacement",
-      "• Brake Fluid Flush",
-      "• Brake System Repairs",
+      "• Battery Testing and Replacement",
+      "• Alternator Repairs",
+      "• Starter Motor Replacement",
+      "• Wiring and Electrical Diagnosis",
     ],
-    imgSrc: Service3.src,
+    imgSrc: Service8.src,
+  },
+  {
+    heading: "Key cutting and programming",
+    services: [
+      "• All key lost services",
+      "• Immobilizer",
+      "• Fob replacement",
+      "• Key cutting and cloning",
+    ],
+    imgSrc: Service12.src,
+  },
+  {
+    heading: "Remapping / Tuning",
+    services: [
+      "• Unlock additional power and torque",
+      "• Enhanced Fuel Efficiency",
+      "• Customization for Specific Needs",
+      "• Throttle Response Improvement",
+    ],
+    imgSrc: Service11.src,
   },
   {
     heading: "Engine Repairs",
@@ -54,6 +63,27 @@ export const servicesData = [
     ],
     imgSrc: Service4.src,
   },
+  {
+    heading: "Routine Maintenance",
+    services: [
+      "• Oil Changes",
+      "• Oil Filter Change",
+      "• Fluid Checks and Top-Ups",
+      "• Air Filter Replacement",
+    ],
+    imgSrc: Service1.src,
+  },
+  {
+    heading: "Brake Services",
+    services: [
+      "• Brake Inspections",
+      "• Brake Pad Replacement",
+      "• Brake Fluid Flush",
+      "• Brake System Repairs",
+    ],
+    imgSrc: Service3.src,
+  },
+
   {
     heading: "Transmission Services",
     services: [
@@ -84,16 +114,7 @@ export const servicesData = [
     ],
     imgSrc: Service7.src,
   },
-  {
-    heading: "Electrical System Repairs",
-    services: [
-      "• Battery Testing and Replacement",
-      "• Alternator Repairs",
-      "• Starter Motor Replacement",
-      "• Wiring and Electrical Diagnosis",
-    ],
-    imgSrc: Service8.src,
-  },
+
   {
     heading: "Towing and Recovery",
     services: [
@@ -113,26 +134,7 @@ export const servicesData = [
     ],
     imgSrc: Service10.src,
   },
-  {
-    heading: "Remapping / Tuning",
-    services: [
-      "• Unlock additional power and torque",
-      "• Enhanced Fuel Efficiency",
-      "• Customization for Specific Needs",
-      "• Throttle Response Improvement",
-    ],
-    imgSrc: Service11.src,
-  },
-  {
-    heading: "Key cutting and programming",
-    services: [
-      "• All key lost services",
-      "• Immobilizer",
-      "• Fob replacement",
-      "• Key cutting and cloning",
-    ],
-    imgSrc: Service12.src,
-  },
+
   {
     heading: "Other services",
     services: [
