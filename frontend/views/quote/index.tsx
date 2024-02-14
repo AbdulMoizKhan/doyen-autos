@@ -9,7 +9,6 @@ import MultipleSelect from "../../components/select-box";
 import { serviceOptions } from "../../utils/helpers";
 import axios from "axios";
 import { useAlert } from "react-alert";
-import { useRouter } from "next/router";
 
 
 const containerWrapper: SxProps = {
@@ -31,10 +30,18 @@ const btnWrapper: SxProps = {
 };
 
 const initialValues = {
-  registrationNo: "",
-  make: "",
-  model: "",
-  engineSize: "",
+  VRMs: "",
+  Make: "",
+  Model: "",
+  EngineSize: "",
+  Year: "",
+  Color: "",
+  Gears: "",
+  FuelType: "",
+  Weight: "",
+  EngineNumber: "",
+  ModelSetupDate: "",
+  BodyStyle: "",
   postCode: "",
   firstname: "",
   lastName: "",
@@ -43,13 +50,15 @@ const initialValues = {
   phoneNo: "",
   address: "",
   date: new Date(),
-  message: "",
+  Message: "",
 };
 
 const QuotePage = () => {
-  const router = useRouter();
   const [isLoading, setBtnLoader] = useState(false);
   const alert = useAlert();
+  const carDetailsJSON = typeof window !== 'undefined' ? localStorage.getItem('carDetails') : null;
+  const carDetails = carDetailsJSON ? JSON.parse(carDetailsJSON) : null;
+  const isDatasetValid = carDetails ? Object.values(carDetails).every(value => value !== undefined && value !== null) : false;
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
@@ -67,19 +76,11 @@ const QuotePage = () => {
       }
     },
   });
-
   useEffect(() => {
-    const { VRMs, Make, Model, EngineSize } = router.query;
-    if (VRMs && Make && Model && EngineSize) {
-      formik.setValues({
-        ...formik.values,
-        registrationNo: VRMs.toString(),
-        make: Make.toString(),
-        model: Model.toString(),
-        engineSize: EngineSize.toString(),
-      });
+    if (isDatasetValid) {
+      formik.setValues({ ...carDetails });
     }
-  }, [router.query]);
+  }, []);
 
   const handleSelectionChange = (selectedValues: string[]) => {
     formik.setFieldValue("services", selectedValues);
@@ -109,9 +110,9 @@ const QuotePage = () => {
                     <TextField
                       variant="outlined"
                       placeholder="Registration No"
-                      label="Registration No"
+                      label="Vehicle Registration Plate"
                       type="text"
-                      name="registrationNo"
+                      name="VRMs"
                       formik={formik}
                     />
                   </Grid>
@@ -119,9 +120,9 @@ const QuotePage = () => {
                     <TextField
                       variant="outlined"
                       placeholder="Make"
-                      label="Make"
+                      label="Manufacturer"
                       type="text"
-                      name="make"
+                      name="Make"
                       formik={formik}
                     />
                   </Grid>
@@ -129,9 +130,9 @@ const QuotePage = () => {
                     <TextField
                       variant="outlined"
                       placeholder="Model"
-                      label="Model"
+                      label="Vehicle Model"
                       type="text"
-                      name="model"
+                      name="Model"
                       formik={formik}
                     />
                   </Grid>
@@ -139,9 +140,91 @@ const QuotePage = () => {
                     <TextField
                       variant="outlined"
                       placeholder="Engine Size"
-                      label="Engine Size"
+                      label="Engine Capacity (cc)"
                       type="text"
-                      name="engineSize"
+                      name="EngineSize"
+                      formik={formik}
+                    />
+                  </Grid>
+
+
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Year"
+                      label="Year of Manufacture"
+                      type="text"
+                      name="Year"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Color"
+                      label="Vehicle Color"
+                      type="text"
+                      name="Color"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Gears"
+                      label="Transmission Type (Gears)"
+                      type="text"
+                      name="Gears"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="FuelType"
+                      label="Fuel Used"
+                      type="text"
+                      name="FuelType"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Weight"
+                      label="Vehicle Weight (kg)"
+                      type="text"
+                      name="Weight"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="EngineNumber"
+                      label="Engine Serial Number"
+                      type="text"
+                      name="EngineNumber"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="ModelSetupDate"
+                      label="Manufacturing Date"
+                      type="text"
+                      name="ModelSetupDate"
+                      formik={formik}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      variant="outlined"
+                      placeholder="BodyStyle"
+                      label="Vehicle Body Type"
+                      type="text"
+                      name="BodyStyle"
                       formik={formik}
                     />
                   </Grid>
@@ -240,7 +323,7 @@ const QuotePage = () => {
                       label="Message"
                       multiline
                       rows={4}
-                      name="message"
+                      name="Message"
                       formik={formik}
                     />
                   </Grid>

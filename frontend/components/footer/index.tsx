@@ -15,6 +15,7 @@ import { AiFillLinkedin, AiFillFacebook } from "react-icons/ai";
 import TextButton from "../text-button";
 import Image from "next/image";
 import Logo from "../../assests/footerLogo.png";
+import { useRouter } from "next/router";
 
 const wrapper: SxProps = {
   background: "#F6F6F6",
@@ -31,6 +32,7 @@ const copyrightWrapper: SxProps = {
 };
 
 export default function Footer() {
+  const router = useRouter()
   const socials = [
     {
       icon: <BiLogoInstagramAlt color="#000" />,
@@ -60,7 +62,6 @@ export default function Footer() {
       links: [
         { title: "Our Focus", url: "/focus" },
         { title: "Our Mission", url: "/about" },
-        { title: "Our Vision", url: "/about" },
       ],
     },
     {
@@ -171,6 +172,22 @@ export default function Footer() {
                 }}
               >
                 Contact Us
+              </Button>
+              <Button
+                onClick={() => router.push('/')}
+                sx={{
+                  borderRadius: "10px",
+                  background: "tomato",
+                  padding: "9px 32px",
+                  color: "#FFF",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  px: 4,
+                  ml: 2,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Get Quote
               </Button>
             </Stack>
           </Stack>

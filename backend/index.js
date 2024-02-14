@@ -42,14 +42,20 @@ app.get('/api/data', (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 TransmissionType: response.data.Response.DataItems.VehicleRegistration.TransmissionType,
                 EngineSize: response.data.Response.DataItems.SmmtDetails.EngineCapacity,
                 Doors: response.data.Response.DataItems.SmmtDetails.NumberOfDoors,
-                message: "Your car Details are successfully found"
+                Weight: response.data.Response.DataItems.TechnicalDetails.Dimensions.KerbWeight,
+                Gears: response.data.Response.DataItems.VehicleRegistration.Transmission,
+                Color: response.data.Response.DataItems.VehicleRegistration.Colour,
+                Year: response.data.Response.DataItems.VehicleRegistration.YearOfManufacture,
+                EngineNumber: response.data.Response.DataItems.VehicleRegistration.EngineNumber,
+                ModelSetupDate: response.data.Response.DataItems.SmmtDetails.SysSetupDate,
+                BodyStyle: response.data.Response.DataItems.SmmtDetails.BodyStyle,
+                message: "Your car Details are successfully found",
             });
         }
         else {
             res.status(404).json({ message: "Your car details are not found" });
         }
     }
-    console.log("helow");
 }));
 app.post('/api/submitcontactus', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

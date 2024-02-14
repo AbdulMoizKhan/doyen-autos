@@ -40,6 +40,13 @@ const Form = () => {
     TransmissionType: "",
     EngineSize: "",
     Doors: "",
+    Weight: "",
+    Gears: "",
+    Color: "",
+    Year: "",
+    EngineNumber: "",
+    ModelSetupDate: "",
+    BodyStyle: "",
   });
   const [isModalOpen, setModalOpen] = useState(false);
   const [VRMs, setVrms] = useState("");
@@ -52,6 +59,8 @@ const Form = () => {
           params: { ...values },
         });
         setCarDetails(response.data);
+        const carDetailsJSON = JSON.stringify(response.data);
+        localStorage.setItem('carDetails', carDetailsJSON);
         if (response.status === 200) {
           alert.success(response.data.message);
           setModalOpen(true);
@@ -209,10 +218,7 @@ const Form = () => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                router.push({
-                  pathname: "/quote",
-                  query: { ...carDetails }, 
-                });
+                router.push({ pathname: "/quote" });
               }}
             >
               <Typography fontSize="18px" textAlign="center" color="blue">
