@@ -1,10 +1,6 @@
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
-  registrationNo: Yup.string().required("Registration No is required"),
-  make: Yup.string().required("Make is required"),
-  model: Yup.string().required("Model is required"),
-  engineSize: Yup.string().required("Engine Size is required"),
   postCode: Yup.string().required("Post Code is required"),
   firstname: Yup.string().min(2).max(25).required("First Name is required"),
   lastName: Yup.string().min(2).max(25).required("Last Name is required"),
