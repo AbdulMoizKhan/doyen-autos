@@ -14,7 +14,7 @@ interface CustomCardProps {
 const Cards = ({ imageUrl, title, quote, bottomLeftText,score }: CustomCardProps) => {
     return (
         <>
-            <Card className='card' sx={{ height: '300px', width: {xs:'270px' , md:'320px'} }} >
+            <Card className='card' sx={{ minHeight: '330px', width: '100%' }} >
                 <CardContent sx={{padding: {xs:'10px 16px', md:'30px 24px'}}}>
                     <Stack direction={'column'} sx={{ gap:'20px' }}>
                         <Stack direction={'row'} justifyContent={'space-between'}>
@@ -46,7 +46,7 @@ const Cards = ({ imageUrl, title, quote, bottomLeftText,score }: CustomCardProps
                                 {score}
                             </Stack>
                         </Stack>
-                        <Typography variant="body2" color="text.secondary" className='card_quote'>
+                        <Typography variant="subtitle2" color="text.secondary" className='card_quote'>
                             {quote}
                         </Typography>
                     </Stack>
