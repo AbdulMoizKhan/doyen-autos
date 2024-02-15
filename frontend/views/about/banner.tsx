@@ -36,7 +36,7 @@ const Banner = () => {
           }}
           />
         ) : (
-          <Box sx={{padding:'0px 26px' , backgroundColor: 'black', height: '50vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
+          <Box sx={{padding:'0px' , backgroundColor: 'black', height: '50vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
         )}
           <Stack sx={{height:{ xs:'50vh' , md:'100vh' ,lg:'100vh'} , justifyContent:'center'}}>
             {/* <Typography
