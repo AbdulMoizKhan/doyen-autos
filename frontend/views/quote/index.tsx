@@ -30,18 +30,18 @@ const btnWrapper: SxProps = {
 };
 
 const initialValues = {
-  VRMs: "",
-  Make: "",
-  Model: "",
-  EngineSize: "",
-  Year: "",
-  Color: "",
-  Gears: "",
-  FuelType: "",
-  Weight: "",
-  EngineNumber: "",
-  ModelSetupDate: "",
-  BodyStyle: "",
+  vrm: "",
+  make: "",
+  model: "",
+  engineSize: "",
+  year: "",
+  color: "",
+  gears: "",
+  fuelType: "",
+  weight: "",
+  engineNumber: "",
+  modelSetupDate: "",
+  bodyStyle: "",
   postCode: "",
   firstname: "",
   lastName: "",
@@ -78,10 +78,24 @@ const QuotePage = () => {
   });
   useEffect(() => {
     if (isDatasetValid) {
-      formik.setValues({ ...carDetails });
+        let { VRMs, Make, Model, EngineSize, Year, Color, Gears, FuelType, Weight, EngineNumber, ModelSetupDate, BodyStyle } = carDetails;
+        formik.setValues({
+          ...formik.values,
+            vrm: VRMs,
+            make: Make ,
+            model: Model ,
+            engineSize: EngineSize ,
+            year: Year ,
+            color: Color ,
+            gears: Gears ,
+            fuelType: FuelType ,
+            weight: Weight ,
+            engineNumber: EngineNumber ,
+            modelSetupDate: ModelSetupDate ,
+            bodyStyle: BodyStyle ,
+        });
     }
-  }, []);
-
+}, []);
   const handleSelectionChange = (selectedValues: string[]) => {
     formik.setFieldValue("services", selectedValues);
   };
@@ -112,7 +126,7 @@ const QuotePage = () => {
                       placeholder="Registration No"
                       label="Vehicle Registration Plate"
                       type="text"
-                      name="VRMs"
+                      name="vrm"
                       formik={formik}
                     />
                   </Grid>
@@ -122,7 +136,7 @@ const QuotePage = () => {
                       placeholder="Make"
                       label="Manufacturer"
                       type="text"
-                      name="Make"
+                      name="make"
                       formik={formik}
                     />
                   </Grid>
@@ -132,7 +146,7 @@ const QuotePage = () => {
                       placeholder="Model"
                       label="Vehicle Model"
                       type="text"
-                      name="Model"
+                      name="model"
                       formik={formik}
                     />
                   </Grid>
@@ -142,7 +156,7 @@ const QuotePage = () => {
                       placeholder="Engine Size"
                       label="Engine Capacity (cc)"
                       type="text"
-                      name="EngineSize"
+                      name="engineSize"
                       formik={formik}
                     />
                   </Grid>
@@ -154,7 +168,7 @@ const QuotePage = () => {
                       placeholder="Year"
                       label="Year of Manufacture"
                       type="text"
-                      name="Year"
+                      name="year"
                       formik={formik}
                     />
                   </Grid>
@@ -164,7 +178,7 @@ const QuotePage = () => {
                       placeholder="Color"
                       label="Vehicle Color"
                       type="text"
-                      name="Color"
+                      name="color"
                       formik={formik}
                     />
                   </Grid>
@@ -174,7 +188,7 @@ const QuotePage = () => {
                       placeholder="Gears"
                       label="Transmission Type (Gears)"
                       type="text"
-                      name="Gears"
+                      name="gears"
                       formik={formik}
                     />
                   </Grid>
@@ -184,7 +198,7 @@ const QuotePage = () => {
                       placeholder="FuelType"
                       label="Fuel Used"
                       type="text"
-                      name="FuelType"
+                      name="fuelType"
                       formik={formik}
                     />
                   </Grid>
@@ -194,7 +208,7 @@ const QuotePage = () => {
                       placeholder="Weight"
                       label="Vehicle Weight (kg)"
                       type="text"
-                      name="Weight"
+                      name="weight"
                       formik={formik}
                     />
                   </Grid>
@@ -204,7 +218,7 @@ const QuotePage = () => {
                       placeholder="EngineNumber"
                       label="Engine Serial Number"
                       type="text"
-                      name="EngineNumber"
+                      name="engineNumber"
                       formik={formik}
                     />
                   </Grid>
@@ -214,7 +228,7 @@ const QuotePage = () => {
                       placeholder="ModelSetupDate"
                       label="Manufacturing Date"
                       type="text"
-                      name="ModelSetupDate"
+                      name="modelSetupDate"
                       formik={formik}
                     />
                   </Grid>
@@ -224,7 +238,7 @@ const QuotePage = () => {
                       placeholder="BodyStyle"
                       label="Vehicle Body Type"
                       type="text"
-                      name="BodyStyle"
+                      name="bodyStyle"
                       formik={formik}
                     />
                   </Grid>
