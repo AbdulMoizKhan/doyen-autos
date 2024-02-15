@@ -55,12 +55,15 @@ const Form = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await axios.get("https://doyen-autos-71yu.vercel.app/api/data", {
-          params: { ...values },
-        });
+        const response = await axios.get(
+          "https://doyen-autos-71yu.vercel.app/api/data",
+          {
+            params: { ...values },
+          }
+        );
         setCarDetails(response.data);
         const carDetailsJSON = JSON.stringify(response.data);
-        localStorage.setItem('carDetails', carDetailsJSON);
+        localStorage.setItem("carDetails", carDetailsJSON);
         if (response.status === 200) {
           alert.success(response.data.message);
           setModalOpen(true);
@@ -110,6 +113,7 @@ const Form = () => {
                   ".MuiInputBase-input": { color: "white" },
                   textTransform: "uppercase",
                 }}
+                formik={formik}
               />
             </CardContent>
             <CardActions sx={{ display: "flex", justifyContent: "center" }}>
