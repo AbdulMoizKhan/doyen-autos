@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
-  Button,
   Container,
-  Stack,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import Cards from "../cards";
 import human from "../../assests/human.jpeg";
 import human2 from "../../assests/human2.png";
 import human3 from "../../assests/human3.png";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Slider from "../slider";
 

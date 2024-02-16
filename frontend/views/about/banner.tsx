@@ -11,11 +11,6 @@ import React from "react";
 import AboutPicture from "../../assests/bannerCheck.jpg";
 import { useMediaQuery } from "react-responsive";
 
-// const boxResposive: SxProps = {
-//   pr: '16px',
-//   pl: '16px'
-// };
-
 const flexBox: SxProps = {
   display: "flex",
   alignItems: "center",
@@ -62,17 +57,6 @@ const Banner = () => {
             justifyContent: "center",
           }}
         >
-          {/* <Typography
-              data-aos="fade-up"
-              sx={{
-                fontWeight: "700",
-                lineHeight: "1.5",
-                fontSize: { xs: "50px", sm: "70px", md: "100px" },
-                color: "white",
-              }}
-            >
-              About Us
-            </Typography> */}
           <Typography
             data-aos="fade-up"
             sx={{

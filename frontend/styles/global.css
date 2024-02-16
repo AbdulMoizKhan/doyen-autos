@@ -35,10 +35,9 @@ body {
 }
 
 .card {
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset !important;
 }
 
 .card_name {
@@ -54,21 +53,21 @@ body {
 .card_remarks {
   color: #616161 !important;
   font-family: Lato;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
 }
 
 .card_quote {
   overflow: hidden;
   color: #616161 !important;
-  text-overflow: ellipsis;
-  font-family: Lato;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 20px;
+  text-overflow: ellipsis !important;
+  font-family: Lato !important;
+  font-size: 13px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 20px !important;
 }
 
 .score {
