@@ -20,6 +20,7 @@ import { useRouter } from "next/router";
 const wrapper: SxProps = {
   background: "#F6F6F6",
   py: 6,
+  px:2,
   zIndex: 1,
 };
 const copyrightWrapper: SxProps = {

@@ -18,6 +18,10 @@ const Slider = ({ children, childClassName }: IExtendedSlider) => {
       <Swiper
         modules={[Navigation, Pagination, A11y, Autoplay]}
         breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
           640: {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -32,10 +36,10 @@ const Slider = ({ children, childClassName }: IExtendedSlider) => {
           },
         }}
         navigation
-        loop={true}
+        // loop={true}
         style={{ padding: "30px 10px" }}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
         }}
       >
         {children}
