@@ -7,8 +7,8 @@ import {
   Typography,
   Grid,
   SxProps,
+  Container,
 } from "@mui/material";
-import Container from "../container";
 import { MdCopyright } from "react-icons/md";
 import { BiLogoInstagramAlt } from "react-icons/bi";
 import { AiFillLinkedin, AiFillFacebook } from "react-icons/ai";
@@ -32,7 +32,7 @@ const copyrightWrapper: SxProps = {
 };
 
 export default function Footer() {
-  const router = useRouter()
+  const router = useRouter();
   const socials = [
     {
       icon: <BiLogoInstagramAlt color="#000" />,
@@ -72,7 +72,7 @@ export default function Footer() {
 
   return (
     <Box sx={wrapper}>
-      <Container>
+      <Container sx={{ px: 0 }}>
         <>
           <Grid container m={2} spacing={{ xs: 1, sm: 3, md: 6 }} mb={8}>
             {routes?.map((route) => {
@@ -174,7 +174,7 @@ export default function Footer() {
                 Contact Us
               </Button>
               <Button
-                onClick={() => router.push('/')}
+                onClick={() => router.push("/")}
                 sx={{
                   borderRadius: "10px",
                   background: "tomato",

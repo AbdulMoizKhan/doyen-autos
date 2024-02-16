@@ -5,7 +5,9 @@
   margin: 0;
   padding: 0;
 }
-
+#__next {
+  overflow: hidden;
+}
 body {
   margin: 0;
   padding: 0;
@@ -261,16 +263,16 @@ body {
 }
 
 .swiper-button-next {
-  background-image: url('../assests/right-arrow.png') !important;
+  background-image: url("../assests/right-arrow.png") !important;
   background-repeat: no-repeat !important;
   background-size: 100% auto !important;
   background-position: center !important;
-  width: 55px  !important;
+  width: 55px !important;
   height: 55px !important;
   margin-left: 60px !important;
 }
 .swiper-button-prev {
-  background-image: url('../assests/left-arrow.png') !important;
+  background-image: url("../assests/left-arrow.png") !important;
   background-repeat: no-repeat !important;
   background-size: 100% auto !important;
   background-position: center !important;
@@ -285,7 +287,6 @@ body {
 .swiper-button-prev::after {
   display: none !important;
 }
-
 
 @media only screen and (max-width: 550px) {
   .box-container_body {
@@ -322,11 +323,10 @@ body {
   }
 }
 
-
 @media (max-width: 768px) {
   .swiper-button-next,
   .swiper-button-prev {
-    width: 40px !important; 
+    width: 40px !important;
     height: 40px !important;
   }
 }

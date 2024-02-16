@@ -55,7 +55,7 @@ const HeroSection = ({ heroTittle, heroSubContent, buttonText }: PropsHeroSectio
             }}
             />
           </Box>) : (
-          <Box sx={{ backgroundColor: 'black', height: '100vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
+          <Box sx={{ background:"linear-gradient(to bottom, #000000 , #808080)", height: '100vh', width: '100%', position: 'absolute', left: '0px', top: '0px' }}></Box>
         )}
         <Grid container height={'100vh'} alignContent={'center'} justifyContent={'center'} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item md={8} xs={12} sx={{ paddingRight: '0px' }}>
